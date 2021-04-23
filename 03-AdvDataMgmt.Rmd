@@ -1,0 +1,150 @@
+
+# Advanced Data Management
+
+> *Advancement only comes with habitually doing more than you are asked.*
+>
+> Gary Ryan Blair.^1^
+
+The wiring of the world has given us ubiquitous networks and broadened
+the scope of issues that data management must now embrace. In everyday
+life, you might use a variety of networks (e.g., the Internet, 4G, WiFi,
+and bluetooth) to gain access to information wherever you might be and
+whatever time it is. As a result, data managers need to be concerned
+with both the **spatial and temporal** dimensions of data. In a highly
+connected world, massive amounts of data are exchanged every minute
+between computers to enable a high level of global integration in
+economic and social activity. **XML** has emerged as the foundation for
+data exchange across many industries. It is a core technology for global
+economic development. On the social side, every day people generate
+millions of messages, photos, and videos that fuel services such as
+Twitter, Flickr, and YouTube. Many organizations are interested in
+analyzing these data streams to learn about social trends, customers'
+opinions, and entrepreneurial opportunities. Organizations need skills
+in collecting, processing, and interpreting the myriad data flows that
+intersect with their everyday business. **Organizational or business
+intelligence** is the general term for describing an enterprise's
+efforts to collect, store, process, and interpret data from internal and
+external sources. It is the first stage of data-driven decision making.
+Once data have been captured and stored in an organizational repository,
+there are several techniques that can be applied.
+
+In a world awash with data, **visualization** has become increasingly
+important for enabling executives to make sense of the business
+environment, to identify problems, and highlight potential new
+directions. **Text mining** is a popular tool for trying to make sense
+of data streams emanating from tweets and blogs. The many new sources of
+data and their high growth rate have made it more difficult to support
+real time analysis of the torrents of data that might contain valuable
+insights for an organization's managers. Fortunately, **Hadoop
+distributed file system (HDFS)** and **cluster computing** methods are a
+breakthrough in storing and processing data that enable faster
+processing at lower cost. **Dashboards** are widely used for presenting
+key information. Furthermore, the open source statistics and graphical
+package, **R**, provides a common foundation for handling text mining,
+data visualization, HDFS, and cluster computing. It has become another
+component of the data manager's toolkit.
+
+The section covers the following topics.
+
+* Spatial and temporal data management
+
+* XML
+
+* Organizational intelligence
+
+* Introduction to R
+
+* Data visualization
+
+* Text mining
+
+* Cluster Computing
+
+* Dashboards
+
+## Spatial and Temporal Data Management
+
+> *Nothing puzzles me more than time and space; and yet nothing troubles
+me less, as I never think about them.*
+>
+> Charles Lamb, 1810.
+
+### Learning objectives
+
+Students completing this chapter will
+
+* be able to define and use a spatial database;
+
+* be familiar with the issues surrounding the management of temporal data.
+
+### Introduction
+
+The introduction of ubiquitous networks and smartphones has led to the
+advent of location-based services. Customers expect information
+delivered based on, among other things, where they are. For example, a
+person touring the historic German city of Regensburg could receive
+information about its buildings and parks via her mobile phone in the
+language of her choice. Her smartphone will determine her location and
+then select from a database details of her immediate environment. Data
+managers need to know how to manage the **spatial** data necessary to
+support location-based services.
+
+Some aspect of time is an important fact to remember for many
+applications. Banks, for example, want to remember what dates customers
+made payments on their loans. Airlines need to recall for the current
+and future days who will occupy seats on each flight. Thus, the
+management of time-varying, or **temporal,** data would be assisted if a
+database management system had built-in temporal support. As a result,
+there has been extensive research on temporal data models and DBMSs for
+more than a decade. The management of temporal data is another skill
+required of today's data management specialist.
+
+The Open Geospatial Consortium, Inc. (OGC) is a nonprofit international
+organization developing standards for geospatial and location-based
+services. Its goal is to create open and extensible software application
+programming interfaces for geographic information systems (GIS) and
+other geospatial technologies. DBMS vendors (e.g., MySQL) have
+implemented some of OGC's recommendations for adding spatial features to
+SQL. MySQL is gradually adding further GIS features as it develops its
+DBMS.
+
+### Managing spatial data
+
+A spatial database is a data management system for the collection,
+storage, manipulation, and output of spatially referenced information.
+Also known as a geographic information system (GIS), it is an extended
+form of DBMS. Geospatial modeling is based on three key concepts: theme,
+geographic object, and map.
+
+A **theme** refers to data describing a particular topic (e.g., scenic
+lookouts, rivers, cities) and is the spatial counterpart of an entity.
+When a theme is presented on a screen or paper, it is commonly seen in
+conjunction with a **map**. Color may be used to indicate different
+themes (e.g., blue for rivers and black for roads). A map will usually
+have a scale, legend, and possibly some explanatory text.
+
+A **geographic object** is an instance of a theme (e.g., a river). Like
+an instance of an entity, it has a set of attributes. In addition, it
+has spatial components that can describe both geometry and topology.
+Geometry refers to the location-based data, such as shape and length,
+and topology refers to spatial relationships among objects, such as
+adjacency. Management of spatial data requires some additional data
+types to represent a point, line, and region.
+
+*Generic spatial data types*
+
+  Data type   Dimensions   Example
+  ----------- ------------ ----------------
+  Point       0            Scenic lookout
+  Line        1            River
+  Region      2            County
+  
+Consider the case where we want to create a database to store some
+details of political units. A political unit can have many boundaries.
+The United States, for example, has a boundary for the continental
+portion, one for Alaska, one for Hawaii, and many more to include places
+such as American Samoa. In its computer form, a boundary is represented
+by an ordered set of line segments (a path).
+
+*Data model for political units*
+

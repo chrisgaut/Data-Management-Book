@@ -62,7 +62,7 @@ The section covers the following topics.
 
 * Dashboards
 
-## Chapter 11: Spatial and Temporal Data Management {-}
+## 11. Spatial and Temporal Data Management {-}
 
 > *Nothing puzzles me more than time and space; and yet nothing troubles
 me less, as I never think about them.*
@@ -805,7 +805,7 @@ systems. San Francisco: Morgan Kaufmann Publishers.
 
 ![](Figures/Chapter 13/Iberia-grid.png)
 
-## Chapter 12: Graph Databases {-}
+## 12. Graph Databases {-}
 
 > *When we use a network, the most important asset we get is access to one another.*
 > 
@@ -1710,7 +1710,7 @@ The graph model for NorthWinds follows the questions.
 
 ![]() *MISSING*
 
-## Chapter 13: XML: Managing Data Exchange {-}
+## 13. XML: Managing Data Exchange {-}
 
 > *Words can have no single fixed meaning. Like wayward electrons, theycan spin away from their initial orbit and enter a wider magnetic field. No one owns them or has a proprietary right to dictate how they will be used.*
 > 
@@ -2854,7 +2854,7 @@ Watson, R. T., and others. 2004. *XML: managing data exchange*:\
 
     j. List the numbers of all checks from customers in Denmark.
 
-## Chapter 14: Organizational Intelligence {-}
+## 14. Organizational Intelligence {-}
 
 > *There are three kinds of intelligence: One kind understands things for itself, the other appreciates what others can understand, the third understands neither for itself nor through others. This first kind is excellent, the second good, and the third kind useless.*
 
@@ -4069,7 +4069,7 @@ support. *Computerworld*, 87--89.
     f. How many elephant polo sticks were sold in New York in each month of
        2002?
 
-## Chapter 15: Introduction to R {-}
+## 15. Introduction to R {-}
 
 > *Statistics are no substitute for judgment*
 > 
@@ -5067,7 +5067,7 @@ Wickham, H., & Grolemund, G. (2017). R for data science: O'Reilly.
 
     d. Save the reshaped file.
 
-## Chapter 16: Data visualization {-}
+## 16. Data visualization {-}
 
 > *The commonality between science and art is in trying to see profoundly - to develop strategies of seeing and showing.*
 > 
@@ -5896,7 +5896,7 @@ e <-  read.csv(eurl,sep=',',header=T)
        and electricity price differentiating by color when the temperature
        is above or below 90ºF. (Hint: Trying recoding temperature).
 
-## Chapter 17: Text mining & natural language processing {-}
+## 17. Text mining & natural language processing {-}
 
 > *From now on I will consider a language to be a set (finite or infinite) of sentences, each finite in length and constructed out of a finite set of elements. All natural languages in their spoken or written form are languages in this sense.*
 > 
@@ -6851,4 +6851,1247 @@ Greenwich, CT: Manning Publications.
     c. Do the cluster analysis and topic model suggest considerable
         differences in the two sets of reports?
 
-## Chapter 18: Cluster computing {-}
+## 18. Cluster computing {-}
+
+> *Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to humans what we want the computer to do*
+> 
+> Donald E. Knuth, *Literate Programming*, 1984
+
+#### Learning objectives {-}
+
+Students completing this chapter will:
+
+* Understand the paradigm shift in decision-oriented data processing;
+
+* Understand the principles of cluster computing
+
+### A paradigm shift {-}
+
+There is much talk of big data, and much of it is not very informative.
+Rather a lot of big talk but not much smart talk. Big data is not just
+about greater variety and volumes of data at higher velocity, which is
+certainly occurring. The more important issue is the paradigm shift in
+data processing so that large volumes of data can be handled in a timely
+manner to support decision making. The foundations of this new model is
+the shift to cluster computing, which means using large numbers of
+commodity processors for massively parallel computing.
+
+We start by considering what is different between the old and new
+paradigms for decision data analysis. Note that we are not considering
+transaction processing, for which the relational model is a sound
+solution. Rather, we are interested in the processing of very large
+volumes of data at a time, and the relational model was not designed for
+this purpose. It is suited for handling transactions, which typically
+involve only a few records. The multidimensional database (MDDB) is the
+"old" approach for large datasets and cluster compute is the "new."
+
+Another difference is the way data are handled. The old approach is to
+store data on a high speed disk drive and load it into computer memory
+for processing. To speed up processing, the data might be moved to
+multiple computers to enable parallel processing and the results merged
+into a single file. Because data files are typically much larger than
+programs, moving data from disks to computers is time consuming. Also,
+high performance disk storage devices are expensive. The new method is
+to spread a large data file across multiple commodity computers,
+possibly using HDFS, and then send each computer a copy of the program
+to run in parallel. The results from the individual jobs are then
+merged. While data still need to be moved to be processed, they are
+moved across a high speed data channel within a computer rather than the
+lower speed cables of a storage network.
+
+  Old                        New
+  -------------------------- ---------------------
+  Data to the program        Program to the data
+  Mutable data               Immutable data
+  Special purpose hardware   Commodity hardware
+
+### The drivers {-}
+
+Exploring the drivers promoting the paradigm shift is a good starting
+point for understanding this important change in data management. First,
+you will recall that you learned in Chapter 1 that decision making is
+the central organizational activity. Furthermore, because data-driven
+decision making increases organizational performance, many executives
+are now demanding data analytics to support their decision making.
+
+Second, as we also explained in Chapter 1, there is a societal shift in
+dominant logic as we collectively recognize that we need to focus on
+reducing environmental degradation and carbon emissions. Service and
+sustainability dominant logics are both data intensive. Customer service
+decisions are increasingly based on the analysis of large volumes of
+operational and social data. Sustainability oriented decisions also
+require large volumes of operational data, which are combined with
+environmental data collected by massive sensor networks to support
+decision making that reduces an organization's environmental impact.
+
+Third, the world is in the midst of a massive data generating digital
+transformation. Large volumes of data are collected about the operation
+on an aircraft's jet engines, how gamers play massively online games,
+how people interact in social media space, and the operation of cell
+phone networks, for example. The digital transformation of life and work
+is creating a bits and bytes tsunami.
+
+### The bottleneck and its solution {-}
+
+In a highly connected and competitive world, speedy high quality
+decisions can be a competitive advantage. However, large data sets can
+take some time and expense to process, and so as more data are
+collected, there is a the danger that decision making will gradually
+slow down and its quality lowered. Data analytics becomes a bottleneck
+when the conversion of data to information is too slow. Second, decision
+quality is lowered when there is a dearth of skills for determining what
+data should be converted to information and interpreting the resulting
+conversion. We capture these problems in the elaboration of a diagram
+that was introduced in Chapter 1, which now illustrates the causes of
+the conversion, request, and interpretation bottlenecks.
+
+*Data analytics bottleneck*
+
+![](Figures/Chapter 18/bottleneck.png)
+
+The people skills problem is being addressed by the many universities
+that have added graduate courses in data analytics. The **Lambda Architecture**[^46] 
+is a proposed general solution to the speed and cost
+problem.
+
+### Lambda Architecture {-}
+
+We will now consider the three layers of the Lambda Architecture: batch,
+speed, and serving.
+
+#### The batch layer {-}
+
+Batch computing describes the situation where a computer works on one or
+more large tasks with minimal interruption. Because early computers were
+highly expensive and businesses operated at a different tempo, batch
+computing was common in the early days of information systems. The
+efficiency gains of batch computing mainly come from uninterrupted
+sequential file processing. The computer spends less time waiting for
+data to be retrieved from disks, particularly with HDFS where files are
+in 64Mb chunks. Batch computing is very efficient, though not timely,
+and the Lambda Architecture takes advantage of this efficiency.
+
+The batch layer is used to precompute queries by running them with the
+most recent version of the dataset. The precomputed results are saved
+and can then be used as required. For example, a supermarket chain might
+want to know how often each pair of products appears in each shopper's
+basket for each day for each store. These data might help it to set
+cross-promotional activities within a store (e.g., a joint special on
+steak and mashed potatoes). The batch program could precompute the count
+of joint sales for each pair of items for each day for each store in a
+given date range. This highly summarized data could then be used for
+queries about customers' baskets (e.g., how many customers purchased
+both shrimp and grits in the last week in all Georgia stores?). The
+batch layer works with a dataset essentially consisting of every
+supermarket receipt because this is the record of a customer's basket.
+This dataset is also stored by the batch layer. Hadoop is well-suited
+for handling the batch layer, as you will see later, but it is not the
+only option.
+
+New data are appended to the master dataset to preserve is immutability,
+so that it remains a complete record of transactions for a particular
+domain (e.g., all receipts). These incremental data are processed the
+next time the batch process is restarted.
+
+The batch layer can be processing several batches simultaneously. It
+typically keeps recomputing batch views using the latest dataset every
+few hours or maybe overnight.
+
+#### The serving layer {-}
+
+The serving layer processes views computed by the batch layer so they
+can be queried. Because the batch layer produces a flat file, the
+serving layer indexes it for random access. The serving layer also
+replaces the old batch output with the latest indexed batch view when it
+is received from the batch layer. In a typical Lambda Architecture
+system, there might be several or more hours between batch updates.
+
+The combination of the batch and serving layers provides for efficient
+reporting, but it means that any queries on the files generated by the
+batch layer might be several or more hours old. We have efficiency but
+not timeliness, for which we need the speed layer.
+
+#### Speed layer {-}
+
+Once a batch recompute has started running, all newly collected data
+cannot be part of the resulting batch report. The purpose of the speed
+layer is to process incremental data as they arrive so they can be
+merged with the latest batch data report to give current results.
+Because the speed layer modifies the results as each chunk of data
+(e.g., a transaction) is received, the merge of the batch and speed
+layer computations can be used to create real-time reports.
+
+*Merging speed and serving layer results to create a report (source: (Marz and Warren 2012))*
+
+![](Figures/Chapter 18/merge-speed-serving.png)
+
+#### Putting the layers together {-}
+
+We now examine the process in detail.
+
+Assume batch~n-1~ has just been processed.
+
+1.  During the processing of batch~n-1~, increment~n-1~ was created from
+    the records received. The combination of these two data sets creates
+    batch~n~.
+
+2. As the data for increment~n-1~ were received, speed layer
+    (Sresults~n-1~) were dynamically recomputed.
+
+3. A current report can be created by combining speed layer and batch
+    layer results (i.e., Sresults~n-1~ and Bresults~n-1~).
+
+Now, assume batch computation resumes with batch~n~.
+
+1.  Sresults~n~ are computed from the data collected (increment~n~)
+    while batch~n~ is being processing.
+
+2. Current reports are based on Bresults~n-1~, Sresults~n-1~, and
+    Sresults~n~.
+
+3. At the end of processing batch~n~, Sresults~n-1~ can be discarded
+    because Bresults~n~ includes all the data from batch~n-1~ and
+    increment~n-1.~
+
+*The preparation of a real-time report using batch and speed layer results when processing batch~n~*
+
+![](Figures/Chapter 18/batch-and-speed.png)
+
+In summary, the batch layer pre-computes reports using all the currently
+available data. The serving layer indexes the results of the batch
+layers and creates views that are the foundation for rapid responses to
+queries. The speed layer does incremental updates as data are received.
+Queries are handled by merging data from the serving and speed layers.
+
+*Lambda Architecture (source: (Marz and Warren 2012))*
+
+![](Figures/Chapter 18/lambda.png)
+
+#### Benefits of the Lambda Architecture {-}
+
+The Lambda Architecture provides some important advantages for
+processing large datasets, and these are now considered.
+
+##### Robust and fault-tolerant {-}
+
+Programming for batch processing is relatively simple and also it can
+easily be restarted if there is a problem. Replication of the batch
+layer dataset across computers increases fault tolerance. If a block is
+unreadable, the batch processor can shift to the identical block on
+another node in the cluster. Also, the redundancy intrinsic to a
+distributed file system and distributed processors provides
+fault-tolerance.
+
+The speed layer is the complex component of the Lambda Architecture.
+Because complexity is isolated to this layer, it does not impact other
+layers. In addition, since the speed layer produced temporary results,
+these can be discarded in the event of an error. Eventually the system
+will right itself when the batch layer produces a new set of results,
+though intermediate reports might be a little out of date.
+
+##### Low latency reads and updates {-}
+
+The speed layer overcomes the long delays associated with batch
+processing. Real-time reporting is possible through the combination of
+batch and speed layer outputs.
+
+##### Scalable {-}
+
+Scalability is achieved using a distributed file system and distributed
+processors. To scale, new computers are added.
+
+##### Support a wide variety of applications {-}
+
+The general architecture can support reporting for a wide variety of
+situations.
+
+##### Extensible {-}
+
+New data types can be added to the master dataset or new master datasets
+created. Furthermore, new computations can be added to the batch and
+speed layers to create new views.
+
+##### Ad hoc queries {-}
+
+On the fly queries can be run on the output of the batch layer provided
+the required data are available in a view.
+
+##### Minimal maintenance {-}
+
+The batch and serving layers are relatively simple programs because they
+don't deal with random updates or writes. Simple code requires less
+maintenance.
+
+##### Debuggable {-}
+
+Batch programs are easier to debug because you can have a clear link
+between the input and output. Data immutability means that debugging is
+easier because no records have been overwritten during batch processing.
+
+#### Relational and Lambda Architectures {-}
+
+Relational technology supports both transaction processing and data
+analytics. As a result, it needs to be more complex than the Lambda
+Architecture. Separating out data analytics from transaction processing
+simplifies the supporting technology and makes it suitable for handling
+large volumes of data efficiently. Relational systems can continue to
+support transaction processing and, as a byproduct, produce data that
+are fed to Lambda Architecture based business analytics.
+
+### Hadoop {-}
+
+Hadoop, an Apache project,[^47] supports distributed processing of large
+data sets across a cluster of computers. A Hadoop cluster consists of
+many standard processors, nodes, with associated main memory and disks.
+They are connected by Ethernet or switches so they can pass data from
+node to node. Hadoop is highly scalable and reliable. It is a suitable
+technology for the batch layer of the Lambda architecture. Hadoop is a
+foundation for data analytics, machine learning, search ranking, email
+anti-spam, ad optimization, and other areas of applications which are
+constantly emerging.
+
+A market analysis projects that the Hadoop market is growing at 58% per
+year.[^48] It also asserts that, "Hadoop is the only cost-sensible and
+scalable open source alternative to commercially available Big Data
+management packages. It also becomes an integral part of almost any
+commercially available Big Data solution and de-facto industry standard
+for business intelligence (BI)."
+
+#### Hadoop distributed file system (HDFS) {-}
+
+HDFS is a highly scalable, fault-toleration, distributed file system.
+When a file is uploaded to HDFS, it is split into fixed sized blocks of
+at least 64MB. Blocks are replicated across nodes to support parallel
+processing and provide fault tolerance. As the following diagram
+illustrates, an original file when written to HDFS is broken into
+multiple large blocks that are spread across multiple nodes. HDFS
+provides a set of functions for converting a file to and from HDFS
+format and handling HDFS.
+
+*Splitting of file across a HDFS cluster.*
+
+![](Figures/Chapter 18/splitting-cluster.png)
+
+On each node, blocks are stored sequentially to minimize disk head
+movement. Blocks are grouped into files, and all files for a dataset are
+grouped into a single folder. As part of the simplification to support
+batch processing, there is no random access to records and new data are
+added as a new file.
+
+Scalability is facilitated by the addition of new nodes, which means
+adding a few more pieces of inexpensive commodity hardware to the
+cluster. Appending new data as files on the cluster also supports
+scalability.
+
+HDFS also supports partitioning of data into folders for processing at
+the folder level. For example, you might want all employment related
+data in a single folder.
+
+### Spark {-}
+
+Spark is an Apache project[^49] for cluster computing that was initiated
+at the University of California Berkeley and later transferred to Apache
+as an open source project. Spark's distributed file system, resilient
+distributed dataset (RDD), has similar characteristics to HDFS. Spark
+can also interface with HDFS and other distributed file systems. For
+testing and development, Spark has a local mode, that can work with a
+local file system.
+
+Spark includes several component, including Spark SQL for SQL-type
+queries, Spark streaming for real-time analysis of event data as it is
+received, and a machine learning (ML) library. This library is designed
+for in-memory processing and is approximately 10 times faster than
+disk-based equivalent approaches. Distributed graph processing is
+implemented using GraphX.
+
+#### Computation with Spark {-}
+
+Spark applications can be written in Java, Scala, Python, and R. In our
+case, we will use the sparklyr,[^50] an R interface to Spark. This
+package provides a simple, easy to use set of commands for exposing the
+distributed processing power of Spark to those familiar with R. In
+particular, it supports dplyr for data manipulation of Spark datasets
+and access to Sparks ML library.
+
+Before starting with sparklyr, you need to check that you have latest
+version of Java on your machine.[^51] Use RStudio to install sparklyr.
+For developing and testing on your computer, install a local version of
+Spark.
+
+```{r, message = FALSE}
+library(sparklyr)
+spark_install(version='2.4')
+```
+
+Use the `spark_connect` function to connect to Spark either locally or on
+a remote Spark cluster. The following code shows how to specify local
+Spark connection (sc).
+
+```{r, message = FALSE}
+library(sparklyr)
+sc <- spark_connect(master = "local")
+```
+
+#### Tabulation {-}
+
+In this example, we have a list of average monthly temperatures for New
+York's Central Park[^52] and we want to determine how often each
+particular temperature occurred. R
+
+Average monthly temperatures since 1869 are read, and the temperature
+rounded to an integer for the convenience of tabulation.
+
+```{r, message = FALSE}
+library(dplyr)
+library(readr)
+url <-  "http://www.richardtwatson.com/data/centralparktemps.txt"
+t <- read_delim(url, delim=',')
+# tabulate frequencies for temperature
+t %>% 
+  mutate(Fahrenheit = round(temperature,0)) %>% 
+  group_by(Fahrenheit) %>%
+  summarize(Frequency = n())
+```
+
+##### Spark {-}
+
+By using dplyr in the prior R code, we can copy and paste and add a few
+commands for the Spark implementation. The major differences are the
+creation of a Spark connection (sc) and copying the R tibble to Spark
+with copy-to. Also, note that you need to sort the resulting tibble,
+which is not required in regular R.
+
+```{r, message = FALSE}
+library(dplyr)
+library(readr)
+spark_install(version='2.4')
+sc <- spark_connect(master = "local", spark_home=spark_home_dir(version = '2.4'))
+url <-  "http://www.richardtwatson.com/data/centralparktemps.txt"
+t <- read_delim(url, delim=',')
+t_tbl <- copy_to(sc,t)
+t_tbl %>% 
+  mutate(Fahrenheit = round(temperature,0)) %>% 
+  group_by(Fahrenheit) %>%
+  summarize(Frequency = n()) %>%
+  arrange(Fahrenheit)
+```
+
+It you observe the two sets of output carefully, you will note that the
+results are not identical. It is because rounding can vary across
+systems. The IEEE Standard for Floating-Point Arithmetic (IEEE 754)[^53]
+states on rounding, "if the number falls midway it is rounded to the
+nearest value with an even (zero) least significant bit." Compare the
+results for round(12.5,0) and round(13.5,0). R follows the IEEE
+standard, but Spark apparently does not.
+
++-----------------------------------------------------------+
+| *Skill builder*                                           |
+|                                                           |
+| Redo the tabulation example with temperatures in Celsius. |
++-----------------------------------------------------------+
+
+#### Basic statistics with Spark {-}
+
+We now take the same temperature dataset and calculate mean, min, and
+max monthly average temperatures for each year and put the results in a
+single file.
+
+##### R {-}
+
+```{r, message = FALSE}
+library(dplyr)
+library(readr)
+url <-  "http://www.richardtwatson.com/data/centralparktemps.txt"
+t <- read_delim(url, delim=',')
+# report minimum, mean, and maximum by year
+t %>% 
+  group_by(year) %>%
+  summarize(Min=min(temperature),
+            Mean = round(mean(temperature),1), 
+            Max = max(temperature))
+```
+
+##### Spark {-}
+
+Again, the use of dplyr makes the conversion to Spark simple.
+
+```{r, message = FALSE}
+library(sparklyr)
+library(tidyverse)
+spark_install(version='2.4')
+sc <- spark_connect(master = "local", spark_home=spark_home_dir(version = '2.4'))
+url <-  "http://www.richardtwatson.com/data/centralparktemps.txt"
+t <- read_delim(url, delim=',')
+t_tbl <- copy_to(sc,t)
+# report minimum, mean, and maximum by year
+# note that sparkly gives a warning if you do not specify how to handle missing values
+t_tbl %>% 
+  group_by(year) %>%
+  summarize(Min=min(temperature, na.rm = T), 
+            Mean = round(mean(temperature, na.rm = T),1), 
+            Max = max(temperature, na.rm = T)) %>%
+  arrange(year)
+```
+
++------------------------------------------------------------------------+
+| *Skill builder*                                                        |
+|                                                                        |
+| A file[^54] of electricity costs for a major city contains a timestamp |
+| and cost separated by a comma. Compute the minimum, mean, and maximum  |
+| costs.                                                                 |
++------------------------------------------------------------------------+
+
+### Summary {-}
+
+Big data is a paradigm shift to new file structures, such as HDFS and
+RDD, and algorithms for the parallel processing of large volumes of
+data. The new file structure approach is to spread a large data file
+across multiple commodity computers and then send each computer a copy
+of the program to run in parallel. The drivers of the transformation are
+the need for high quality data-driven decisions, a societal shift in
+dominant logic, and digital transformation. The speed and cost of
+converting data to information is a critical bottleneck as is a dearth
+of skills for determining what data should be converted to information
+and interpreting the resulting conversion. The people skills problem is
+being addressed by universities' graduate courses in data analytics. The
+Lambda Architecture, a solution for handling the speed and cost problem,
+consists of three layers: speed, serving, and batch. The batch layer is
+used to precompute queries by running them with the most recent version
+of the dataset. The serving layer processes views computed by the batch
+layer so they can be queried. The purpose of the speed layer is to
+process incremental data as they arrive so they can be merged with the
+latest batch data report to give current results. The Lambda
+Architecture provides some important advantages for processing large
+datasets. Relational systems can continue to support transaction
+processing and, as a byproduct, produce data that are fed to Lambda
+Architecture based business analytics.
+
+Hadoop supports distributed processing of large data sets across a
+cluster of computers. A Hadoop cluster consists of many standard
+processors, nodes, with associated main memory and disks. HDFS is a
+highly scalable, fault-toleration, distributed file system. Spark is a
+distributed computing method for scalable and fault-tolerant cluster
+computation.
+
+  Key terms and concepts
+  ---------------------------- --------------------------------
+  Batch layer                  Lambda Architecture
+  Bottleneck                   Parallelism
+  Cluster computing            Serving layer
+  Hadoop                       Spark
+  HDFS                         Speed layer
+  Immutable data
+
+#### References and additional readings {-}
+
+Lam, C. (2010). *Hadoop in action*: Manning Publications Co.
+
+Marz, N., & Warren, J. (2012). *Big Data*: Manning Publications.
+
+#### Exercises {-}
+
+1.  Write Spark code for the following situations.
+
+    a. Compute the square and cube of the numbers in the range 1 to 25.
+        Display the results in a data frame.
+
+    b. Using the average monthly temperatures for New York's Central
+        Park, compute the maximum, mean, and average temperature in
+        Celsius for each month.
+
+    c. Using the average monthly temperatures for New York's Central
+        Park, compute the max, mean, and min for August. You will need
+        to use subsetting, as discussed in this chapter.
+
+    d. Using the electricity price data, compute the average hourly
+        cost.
+
+    e. Read the national GDP file,[^55] which records GDP in millions,
+        and count how many countries have a GDP greater than or less
+        than 10,000 million.
+
+## 19. Dashboards {-}
+
+*I think, aesthetically, car design is so interesting - the dashboards,
+the steering wheels, and the beauty of the mechanics. I don\'t know how
+any of it works, I don\'t want to know, but it\'s inspirational.*
+
+Paloma Picasso, designer, 2013[^56]
+
+#### Learning objectives {-}
+
+Students completing this chapter will:
+
+* Understand the purpose of dashboards;
+
+* Be able to use the R package shinydashboard to create a dashboard.
+
+### The value of dashboards {-}
+
+A dashboard is a web page or mobile app screen designed to present
+important information, primarily visual format, that can be quickly and
+easily comprehended. Dashboards are often used to show the current
+status, such as the weather app you have on your smart phone. Sometimes,
+a dashboard can also show historical data as a means of trying to
+identify long term trends. Key economic indicators for the last decade
+or so might be shown graphically to help strategic planners identify
+major shifts in economic activity. In a world overflowing with data,
+dashboards are an information system for summarizing and presenting key
+data. They can be very useful for maintaining situation awareness, by
+providing information about key environmental measures of the current
+situation and possible future developments.
+
+A dashboard typically has a header, sidebar and body
+
+#### Header {-}
+
+There is a header across the top of a page indicating the purpose of the
+dashboard, and additional facts about the content, such as the creator.
+A search engine is a common element of a header. A header can also
+contain tabs to various sources of information or reports (e.g., social
+media or Fortune 1000 companies).
+
+#### Sidebar {-}
+
+A sidebar usually contains features that enable the body of the report
+to be customized to the viewer's needs. There might be filters to
+fine-tune what is displayed. Alternatively, there can be links to select
+information on a particular topic. In the following example, the sidebar
+contains some high level summary data, such as the number of documents
+in a category.
+
+#### Body {-}
+
+The body of a dashboard contains the information selected via a sidebar.
+It can contained multiple panes, as shown in the following example, that
+display information in a variety of ways. The body of the following
+dashboard contains four types of visuals (a multiple time series graph,
+a donut style pie chart, a map, and a relationship network). It also
+shows a list of documents satisfying the specified criteria and a word
+cloud of these documents.
+
+I encourage you to visit the ecoresearch.net dashboard. It is an
+exemplar and will give you some idea of the diversity of ways in which
+information can be presented and the power of a dashboard to inform.
+
+*A dashboard \<[[http://www.ecoresearch.net/climate/]{.underline}](http://www.ecoresearch.net/climate/)\>*
+
+![](Figures/Chapter 19/climate-dashboard.png)
+
+#### Designing a dashboard {-}
+
+The purpose of a dashboard is to communicate, so the first step is to
+work with the client to determine the key performance indicators (KPIs),
+visuals, or text that should be on the dashboard. Your client will have
+some ideas as to what is required, and by asking good questions and
+prototyping, you can clarify needs.
+
+You will need to establish that high quality data sources are available
+for conversion into the required information. If data are not available,
+you will have to work with other IS professionals to establish them, or
+you might conclude that it is infeasible to try to meet some
+requirements. You should keep the client informed as you work through
+the process of resolving data source issues. Importantly, you should
+make the client aware of any data quality problems. Sometimes your
+client might have to settle for less than desirable data quality in
+order to get some idea of directional swings.
+
+Try several ways of visualizing data to learn what suits the client. The
+ggvis package works well with shinydashboard, the dashboard package we
+will learn. Also, other R packages, such as dygraphs, can be deployed
+for graphing time series, a frequent dashboard element for showing
+trends and turning points. Where possible, use interactivity to enable
+the client to customize as required (e.g., let the client select the
+period of a time series).
+
+Design for ease of navigation and information retrieval. Simplicity
+should generally be preferred to complexity. Try to get chunks of
+information that should be viewed at the same time on the same page, and
+put other collections of cohesive information on separate tabs.
+
+Use colors consistently and in accord with general practice. For
+example, red is the standard color for danger, so a red information box
+should contain only data that indicate a key problem (e.g., a machine
+not working or a major drop in a KPI). Consistency in color usage can
+support rapid scanning of a dashboard to identify the attention
+demanding situations.
+
+Study dashboards that are considered as exhibiting leading business
+practices or are acknowledged as exemplars. Adopt or imitate the
+features that work well.
+
+Build a prototype as soon as you have a reasonable idea of what you
+think is required and release it to your client. This will enable the
+client to learn what is possible and for you to get a deeper
+understanding of the needs. Learn from the response to the prototype,
+redesign, and release version 2. Continue this process for a couple of
+iterations until the dashboard is accepted.
+
+#### Dashboards with R {-}
+
+R requires two packages, shiny and shinydashboard, to create a
+dashboard. Also, you must use RStudio to run your R script. Shiny is a R
+package for building interactive web applications in R. It was
+contributed to the R project by RStudio. It does not require knowledge
+of traditional web development tools such as HTML, CSS, or JavaScript.
+Shinydashboard uses Shiny to create dashboards, but you you don't need
+to learn Shiny. Some [[examples]{.underline}](http://www.apple.com) of
+dashboards built with shinydashboard will give you an idea of what is
+feasible.
+
+##### The basics {-}
+
+In keeping with the style of this book, we will start by creating a
+minimalist dashboard without any content. There are three elements:
+header, sidebar, and body. It this case, they are all null. Together,
+these three elements create the UI (user interface) of a dashboard page.
+The dynamic side of the page, the server, is also null. A dashboard is a
+Shiny app, and the final line of code runs the application.
+
+A UI script defines the layout and appearance of dashboard's web page.
+The server script contains commands to run the dashboard app and to make
+a page dynamic.
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinydashboard)
+header <- dashboardHeader()
+sidebar <- dashboardSidebar()
+body <- dashboardBody()
+ui <- dashboardPage(header,sidebar,body)
+server <- function(input, output) {}
+shinyApp(ui, server)
+```
+
+When you select all the code and run it, a new browser window will open
+and display a blank dashboard.
+
+![](Figures/Chapter 19/dashboard-1.png)
+
+When you inspect some shinydashboard code, you will sometimes see a
+different format in which commands are deeply embedded in other
+commands. The following code illustrates this approach. I suggest you
+avoid it because it is harder to debug such code, especially when you
+are a novice.
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinydashboard)
+ui <- dashboardPage(
+  dashboardHeader(),
+  dashboardSidebar(),
+  dashboardBody()
+)
+server <- function(input, output) {}
+shinyApp(ui, server)
+```
+
+##### Terminating a dashboard {-}
+
+A dashboard is meant to be a dynamic web page that is updated when
+refreshed or when some element of the page is clicked on. It remains
+active until terminated. This means that when you want to test a new
+version of a dashboard or run another one, you must first stop the
+current one. You will need to click the stop icon on the console's top
+left to terminate a dashboard and close its web page.
+
+##### A header and a body {-}
+
+We now add some content to a basic dashboard by giving it a header and a
+body. This page reports the share price of Apple, which has the stock
+exchange symbol of AAPL. The getQuote function[^57] of the
+[[quantmod]{.underline}](https://cran.r-project.org/web/packages/quantmod/index.html)
+package returns the latest price, with about a two hour delay, every
+time the page is opened or refreshed. Notice the use of paste to
+concatenate a title and value.
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinydashboard)
+library(quantmod)
+header <- dashboardHeader(title = 'Apple stock watch')
+sidebar <- dashboardSidebar()
+body <- dashboardBody(paste('Latest price ',getQuote('AAPL')$Last))
+ui <- dashboardPage(header,sidebar,body)
+server <- function(input, output) {}
+shinyApp(ui, server)
+```
+
+![](Figures/Chapter 19/dashboard-2.png)
+
+##### Boxes and rows {-}
+
+Boxes are the building blocks of a dashboard, and they can be assembled
+into rows or columns. The fluidRow function is used to place boxes into
+rows and columns. The following code illustrates the use of fluidRow.
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinydashboard)
+library(quantmod)
+header <- dashboardHeader(title = 'Apple stock watch')
+sidebar <- dashboardSidebar()
+boxLatest <- box(title = 'Latest price: ',getQuote('AAPL')$Last, background = 'blue' )
+boxChange <-  box(title = 'Change ',getQuote('AAPL')$Change, background = 'red' )
+row <- fluidRow(boxLatest,boxChange)
+body <- dashboardBody(row)
+ui <- dashboardPage(header,sidebar,body)
+server <- function(input, output) {}
+shinyApp(ui, server)
+```
+
+![](Figures/Chapter 19/dashboard-3.png)
+
++------------------------------------------------------------------------+
+| *Skill builder*                                                        |
+|                                                                        |
+| Add three more boxes (e.g., high price) to the dashboard just created. |
++------------------------------------------------------------------------+
+
+##### Multicolumn layout {-}
+
+Shinydashboard is based on dividing up the breadth of a web page into 12
+units, assuming it is wide enough. Thus, a box with width = 6 will take
+up half a page. The tops of the boxes in each row will be aligned, but
+the bottoms may not be because of the volume of data they contain. The
+fluidRows function ensures that a row's elements appear on the same
+line, if the browser has adequate width.
+
+You can also specify that boxes are placed in columns. The column
+function defines how much horizontal space, within the 12-unit width
+grid, each element should occupy.
+
+In the following code, note how:
+
+* a background for a box is defined (e.g., background='navy');
+
+* five boxes are organized into two columns (rows \<- fluidRow(col1,col2));
+
+* volume of shares traded is formatted with commas (formatC(getQuote('AAPL\')\$Volume,big.mark=\',\').
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinydashboard)
+library(quantmod)
+header <- dashboardHeader(title = 'Apple stock watch')
+sidebar <- dashboardSidebar()
+boxLast <-  box(title = 'Latest', width=NULL, getQuote('AAPL')$Last, background='navy')
+boxHigh <-  box(title = 'High', width=NULL, getQuote('AAPL')$High , background='light-blue')
+boxVolume <- box(title = 'Volume', width=NULL, formatC(getQuote('AAPL')$Volume,big.mark=','), background='aqua')
+boxChange <-  box(title = 'Change', width=NULL, getQuote('AAPL')$Change, background='light-blue')
+boxLow <-  box(title = 'Low', width=NULL, getQuote('AAPL')$Low, background='light-blue')
+col1 <-  column(width = 4,boxLast,boxHigh,boxVolume)
+col2 <-  column(width = 4,boxChange,boxLow)
+rows <- fluidRow(col1,col2)
+body <- dashboardBody(rows)
+ui <- dashboardPage(header,sidebar,body)
+server <- function(input, output) {}
+shinyApp(ui, server)
+```
+
+![](Figures/Chapter 19/dashboard-4.png)
+
+##### Sidebar {-}
+
+A sidebar is typically used to enable quick navigation of a dashboard's
+features. It can contain layers of menus, and by clicking on a menu link
+or icon, the dashboard can display different content in the body area.
+
+A library of icons is available
+([[Font-Awesome]{.underline}](http://fontawesome.io/icons/) and
+[[Glyphicons]{.underline}](http://www.apple.com)) for use in the
+creation of a dashboard.
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinydashboard)
+library(quantmod)
+header <-  dashboardHeader(title = 'Stock watch')
+menuApple <-  menuItem("Apple", tabName = "Apple", icon = icon("dashboard"))
+menuGoogle <- menuItem("Google", tabName = "Google", icon = icon("dashboard"))
+sidebar <-  dashboardSidebar(sidebarMenu(menuApple, menuGoogle))
+tabApple <-  tabItem(tabName = "Apple", getQuote('AAPL')$Last)
+tabGoogle <-  tabItem(tabName = "Google", getQuote('GOOG')$Last)
+tabs <-  tabItems(tabApple,tabGoogle)
+body <-  dashboardBody(tabs)
+ui <- dashboardPage(header, sidebar, body)
+server <- function(input, output) {}
+shinyApp(ui, server)
+```
+
+For the following dashboard, by clicking on Apple, you get its latest
+share price, and similarly for Google.
+
+![](Figures/Chapter 19/dashboard-5.png)
+
+##### Infobox {-}
+
+An infobox is often used to display a single measure, such as a KPI.
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinydashboard)
+library(quantmod)
+header <- dashboardHeader(title = 'Apple stock watch')
+sidebar <- dashboardSidebar()
+infoLatest <- infoBox(title = 'Latest', icon('dollar'), getQuote('AAPL')$Last, color='red')
+infoChange <- infoBox(title = 'Web site', icon('apple'),href='http://investor.apple.com', color='purple')
+row <- fluidRow(width=4,infoLatest,infoChange)
+body <- dashboardBody(row)
+ui <- dashboardPage(header,sidebar,body)
+server <- function(input, output) {}
+shinyApp(ui, server))
+```
+
+The following dashboard shows the latest price for Apple's shares. By
+clicking on the purple infobox, you access Apple investors' web site.
+
+![](Figures/Chapter 19/dashboard-6.png)
+
+##### Dynamic dashboards {-}
+
+Dashboards are more useful when they give managers access to determine
+what is presented. The server function supports dynamic dashboards and
+executes when a dashboard is opened or refreshed.
+
+The following basic dashboard illustrates how a server function is
+specified and how it communicates with the user interface. Using the
+time series graphing package, dygraphs, it creates a dashboard showing
+the closing price for Apple. Key points to note:
+
+* The ui function indicates that it wants to create a graph with the code
+`dygraphOutput('apple')`.
+
+* The server executes `output$apple <- renderDygraph({dygraph(Cl(get(getSymbols('AAPL'))))}) `
+to produce the graph.
+
+* The linkage between the UI and the server functions is through the
+highlighted code, as shown in the preceding two bullets and the
+following code block.
+
+* The text parameter of `dynagraphOutput()` in the UI function must match the text following `output$` in the server function.
+
+* The data to be graphed are retrieved with the Cl function of the quantmod package.[^58]
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinydashboard)
+library(quantmod)
+library(dygraphs) # graphic package for time series
+header <-  dashboardHeader(title = 'Apple stock watch')
+sidebar <- dashboardSidebar(NULL)
+boxPrice <- box(title='Closing share price', width = 12, height = NULL, dygraphOutput('apple'))
+body <-   dashboardBody(fluidRow(boxPrice))
+ui <- dashboardPage(header, sidebar, body)
+server <- function(input, output) {
+# quantmod retrieves closing price as a time series
+output$apple <- renderDygraph({dygraph(Cl(get(getSymbols('AAPL'))))})
+}
+shinyApp(ui, server)
+```
+
+When you create the dashboard, mouse over the points on the graph and
+observe the data that are reported.
+
+![](Figures/Chapter 19/dashboard-7.png)
+
+The following code illustrates how to create a dashboard that enables an
+analyst to graph the closing share price for Apple, Google, or Ford.
+Important variables in the code have been highlighted so you can easily
+see the correspondence between the UI and server functions. Note:
+
+* The use of a selection list to pick one of three companies
+  (`selectInput("symbol", "Equity:", choices = c("Apple" = "AAPL", "Ford" = "F", "Google" = "GOOG"))`).
+
+* When an analyst selects one of the three firms, its stock exchange 
+  symbol (symbol) is passed to the server function.
+
+* The value of symbol is used to retrieve the time series for the
+  stock and to generate the graphic (chart ) for display with
+  `boxSymbol`. The symbol is also inserted into a text string (text) for display with `boxOutput`.
+
+```{r, eval = FALSE}
+library(shiny)
+library(shinydashboard)
+library(quantmod)
+library(dygraphs)
+header <-  dashboardHeader(title = 'Stock watch')
+sidebar <- dashboardSidebar(NULL)
+boxSymbol <-  box(selectInput("symbol", "Equity:", choices = c("Apple" = "AAPL",  "Ford" = "F", "Google" = "GOOG"), selected = 'AAPL'))
+boxPrice <- box(title='Closing price', width = 12, height = NULL, dygraphOutput("chart"))
+boxOutput <-  box(textOutput("text"))
+body <-   dashboardBody(fluidRow(boxSymbol, boxOutput, boxPrice))
+ui <- dashboardPage(header, sidebar, body)
+server <- function(input, output) {
+  output$text <- renderText({
+    paste("Symbol is:",input$symbol)
+  })
+# Cl in quantmod retrieves closing price as a time series
+output$chart <- renderDygraph({dygraph(Cl(get(input$symbol)))}) # graph time series
+}
+shinyApp(ui, server)
+```
+
+The following dashboard shows the pull down list in the top left for
+selecting an equity. The equity's symbol is then displayed in the top
+right box, and a time series of its closing price appears in the box
+occupying the entire second row.
+
+![](Figures/Chapter 19/dashboard-8.png)
+
+##### Input options {-}
+
+The preceding example illustrates the use of a selectInput function to
+select an equity from a list. There are other input options available,
+and these are listed in the following table.
+
+  Function               Purpose
+  ---------------------- ----------------------------------
+  checkboxInput()        Check one or more boxes
+  checkboxGroupInput()   A group of checkboxes
+  numericInput()         A spin box for numeric input
+  radioButtons()         Pick one from a set of options
+  selectInput()          Select from a drop-down text box
+  selectSlider()         Select using a slider
+  textInput()            Input text
+
++------------------------------------------------------------------------+
+| *Skill builder*                                                        |
+|                                                                        |
+| Using ClassicModels, build a dashboard to report total orders by value |
+| and number for a given year and month.                                 |
++------------------------------------------------------------------------+
+
+#### Conclusion {-}
+
+This chapter has introduced you to the basic structure and use of
+shinydashboard. It has many options, and you will need to consult the
+online
+[[documentation]{.underline}](http://rpackages.ianhowson.com/cran/shinydashboard/)
+and examples to learn more about creating dashboards.
+
+### Summary {-}
+
+A dashboard is a web page or mobile app screen that is designed to
+present important information in an easy to comprehend and primarily
+visual format. A dashboard consists of a header, sidebar, and body.
+Shinydashboard is an R package based on shiny that facilitates the
+creation of interactive real-time dashboards. It must be used in
+conjunction with RStudio.
+
+  Key terms and concepts
+  ------------------------ --------------------------------------
+  Body                     Sidebar
+  Header                   UI function
+  Server function          User-interface (ui)
+
+#### References {-}
+
+Few, S. (2006). *Information dashboard design*: O\'Reilly.
+
+#### Exercises {-}
+
+1.  Create a dashboard to show the current conditions and temperatures
+    in both Fahrenheit and Celsius at a location. Your will need the
+    [[rwunderground]{.underline}](https://cran.r-project.org/web/packages/rwunderground/index.html)
+    package and [[an API
+    key]{.underline}](https://www.wunderground.com/weather/api/d/docs).
+
+2. Revise the dashboard created in the prior exercise to allow someone
+    to select from up to five cities to get the weather details for that
+    city.
+
+3. Extend the previous dashboard. If the temperature is about 30C
+    (86F), code the server function to give both temperature boxes a red
+    background, and if it is below 10C (50F) give both a blue
+    background. Otherwise the color should be yellow.
+
+4. Use the WDI package to access World Bank Data and create a dashboard
+    for a country of your choosing. Show three or more of the most
+    current measures of the state of the selected country as an
+    information box.
+
+5. Use the WDI package to access World Bank Data for China, India, and
+    the US for three variables, (1) CO2 emissions (metric tons per
+    capita), (2) Electric power consumption (kWh per capita), and (3)
+    forest area (% of land area). The corresponding WDI codes are:
+    EN.ATM.CO2E.PC, EG.USE.ELEC.KH.PC, and AG.LND.FRST.ZS. Set up a
+    dashboard so that a person can select the country from a pull down
+    list and then the data for that country are shown in three
+    infoboxes.
+
+6. Use the WDI package to access World Bank Data for China, India, and
+    the US for three variables, (1) CO2 emissions (metric tons per
+    capita), (2) Electric power consumption (kWh per capita), and (3)
+    forest area (% of land area). The corresponding WDI codes are:
+    EN.ATM.CO2E.PC, EG.USE.ELEC.KH.PC, and AG.LND.FRST.ZS. Set up a
+    dashboard so that a person can select one of the three measures, and
+    then the data for each country are shown in separate infoboxes.
+
+7. Create a dashboard to:
+
+    a.  Show the conversion rate between two currencies using the quantmod
+        package to retrieve exchange rates. Let a person select from one of
+        five currencies using a drop down box;
+
+    b.  Show the value of input amount when converted one of the selected
+        currencies to the other selected currency;
+
+    c.  Show the exchange rate between the two selected currencies over the
+        last 100 days
+
+
+[^1]: [[http://www.garyryanblair.com]{.underline}](http://www.terry.uga.edu/people/rwatson/)
+
+[^2]: epsg.io/4326
+
+[^3]: Adapted from: Goralwalla, I. A., M. T. Özsu, and D. Szafron. 1998.
+    *An object-oriented framework for temporal data models. In Temporal
+    databases: research and practice*, edited by O. Etzion, S. Jajoda,
+    and S. Sripada. Berlin: Springer-Verlag
+
+[^4]: [[www.opencypher.org]{.underline}](https://www.opencypher.org)
+
+[^5]: [[www.gqlstandards.org]{.underline}](https://www.gqlstandards.org)
+
+[^6]: https://neo4j.com/neo4j-graph-database/
+
+[^7]: https://neo4j.com/download/
+
+[^8]: [[s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf]{.underline}](https://s3.amazonaws.com/artifacts.opencypher.org/openCypher9.pdf)/
+
+[^9]: Needham, M., & Hodler, A. E. (2019). *Graph Algorithms: Practical
+    Examples in Apache Spark and Neo4j:* O\'Reilly Media. ISBN:
+    1492047651
+
+[^10]: [[www.richardtwatson.com/dm6e/reader/northwind.cypher]{.underline}](https://www.richardtwatson.com/dm6e/reader/northwind.cypher)
+
+[^11]: Cowlishaw, M. F. (1987). Lexx---a programmable structured editor.
+    *IBM Journal of Research and Development*, 31(1), 73-80.
+
+[^12]: [[www.ofx.net]{.underline}](http://www.ofx.net)
+
+[^13]: You should use an XML editor for creating XML files. I have not
+    found a good open source product. Among the commercial products, my
+    preference is for [[Oxygen]{.underline}](http://www.oxygenxml.com/),
+    which you can get for a 30 days trial.
+
+[^14]: In this chapter, numbers in {} refer to line numbers in the
+    corresponding XML code.
+
+[^15]: A namespace is a collection of valid names of attributes, types,
+    and elements for a schema. Think of a namespace as a dictionary.
+
+[^16]: Overall, Firefox seems to do the best job of displaying xml
+    files.
+
+[^17]: [[www.softwareag.com/Corporate/products/wm/tamino/default.asp]{.underline}](http://www.softwareag.com/Corporate/products/wm/tamino/default.asp)
+
+[^18]: The lib\_mysqludf\_xql library is housed at
+    [[www.mysqludf.org]{.underline}](http://www.mysqludf.org). It might
+    not be installed for the version of MySQL you are using.
+
+[^19]: [[http://www.richardtwatson.com/xml/customerpayments.xml]{.underline}](http://richardtwatson.com/xml/customerpayments.xml)
+
+[^20]: RStudio provides a keyboard command, which is Alt+- (Windows &
+    Linux) or Option+- (Mac)
+
+[^21]: [^[http://cran.r-project.org/web/packages/]{.underline}^](http://cran.r-project.org/web/packages/)
+
+[^22]: [[http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html]{.underline}](http://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+
+[^23]: Short cuts is Ctrl+Shift+M (Windows & Linux) and Cmd+Shift+M
+    (Mac)
+
+[^24]: This is the R notation for indicating the package (dplyr) to
+    which a method (inner\_join) belongs.
+
+[^25]: As I continually revise data files to include the latest
+    observations, your answer might differ for this and other analyses.
+
+[^26]: You will likely get a warning message of the form "unrecognized
+    MySQL field type 7 in column 0 imported as character," because R
+    does does recognize the first column as a timestamp. You can ignore
+    it, but later you might need to convert the column to R's timestamp
+    format.
+
+[^27]: ^See\ [[http://www.r-project.org/doc/bib/R-books.html]{.underline}](http://www.r-project.org/doc/bib/R-books.html)^
+
+[^28]: [^[http://chartsgraphs.wordpress.com/category/r-climate-data-analysis-tool/]{.underline}^](http://chartsgraphs.wordpress.com/category/r-climate-data-analysis-tool/)
+
+[^29]: Note these prices have been transformed from the original values,
+    but are still representative of the changes over time.
+
+[^30]: [[http://www.statmethods.net/management/functions.html]{.underline}](http://www.terry.uga.edu/people/rwatson/)
+
+[^31]: Wilkinson, L. (2005). *The grammar of graphics* (2nd ed.). New
+    York: Springer.
+
+[^32]: [[http://trifacta.github.io/vega/]{.underline}](http://trifacta.github.io/vega/)
+
+[^33]: [[www.w3schools.com/cssref/css\_colornames.asp]{.underline}](http://www.w3schools.com/cssref/css_colornames.asp)
+
+[^34]: Dead weight tonnage is a measure of how much weight, in tonnes, a
+    ship can safely carry.
+
+[^35]: Note these prices have been transformed from the original values,
+    but are still representative of the changes over time.
+
+[^36]: [[www.w3schools.com/cssref/css\_colornames.asp]{.underline}](http://www.w3schools.com/cssref/css_colornames.asp)
+
+[^37]: Ambiguities are often the inspiration for puns. "You can tune a
+    guitar, but you can\'t tuna fish. Unless of course, you play bass,\"
+    by Douglas Adams
+
+[^38]: [[http://www.berkshirehathaway.com/letters/letters.html]{.underline}](http://www.berkshirehathaway.com/letters/letters.html)
+
+[^39]: The converted letters are available at
+    [[http://www.richardtwatson.com/BuffettLetters/]{.underline}](http://www.terry.uga.edu/people/rwatson/)
+    and will be extended to include earlier and more recent letters. The
+    folder also contains the original letter in pdf.
+
+[^40]: See
+    [[http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop]{.underline}](http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop)
+
+[^41]: The mathematics of LDA and CTM are beyond the scope of this text.
+    For details, see Grün, B., & Hornik, K. (2011). Topicmodels: An R
+    package for fitting topic models. *Journal of Statistical Software*,
+    40(13), 1-30.
+
+[^42]: Humans have a capacity to handle about 7±2 concepts at a time.
+    Miller, G. A. (1956). The magical number seven, plus or minus two:
+    some limits on our capacity for processing information. *The
+    Psychological Review*, 63(2), 81-97.
+
+[^43]: [[http://opennlp.apache.org]{.underline}](http://opennlp.apache.org)
+
+[^44]: [[http://www.investors.ups.com/phoenix.zhtml?c=62900&p=irol-reportsannual]{.underline}](http://www.investors.ups.com/phoenix.zhtml?c=62900&p=irol-reportsannual)
+
+[^45]: [[http://tech.knime.org/named-entity-recognizer-and-tag-cloud-example]{.underline}](http://tech.knime.org/named-entity-recognizer-and-tag-cloud-example)
+
+[^46]: Marz, N., & Warren, J. (2012). *Big Data*: Manning Publications.
+
+[^47]: [[http://hadoop.apache.org]{.underline}](http://hadoop.apache.org)
+
+[^48]: [[https://www.marketanalysis.com/?p=279]{.underline}](https://www.marketanalysis.com/?p=279)
+    (Hadoop Market Forecast 2017-2022, May 2017)
+
+[^49]: [[https://spark.apache.org]{.underline}](https://spark.apache.org)
+
+[^50]: [[http://spark.rstudio.com]{.underline}](http://spark.rstudio.com)
+
+[^51]: [[https://www.java.com/en/download/help/version\_manual.xml]{.underline}](https://www.java.com/en/download/help/version_manual.xml)
+
+[^52]: [[http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html]{.underline}](http://www.erh.noaa.gov/okx/climate/records/monthannualtemp.html)
+
+[^53]: [[https://en.wikipedia.org/wiki/IEEE\_floating\_point]{.underline}](https://en.wikipedia.org/wiki/IEEE_floating_point)
+
+[^54]: [^[http://www.richardtwatson.com/data/electricityprices.csv]{.underline}^](http://people.terry.uga.edu/rwatson/data/electricityprices2010_14.csv)
+
+[^55]: [[http://www.richardtwatson.com/data/GDP.csv]{.underline}](http://people.terry.uga.edu/rwatson/data/GDP.csv)
+
+[^56]: [^[http://articles.latimes.com/2013/apr/18/news/la-paloma-picasso-discusses-new-olive-leaf-collection-for-tiffany-co-20130418]{.underline}^](http://articles.latimes.com/2013/apr/18/news/la-paloma-picasso-discusses-new-olive-leaf-collection-for-tiffany-co-20130418)
+
+[^57]: ^getQuote\ returns\ a\ dataframe,\ containing\ eight\ values\ :Trade\ Time,\ Last,\ Change,\ %\ Change,\ Open,\ High,\ Low,\ Volume.\ For\ example,\ getQuote(\'AAPL\')\$\`%\ Change\`\ returns\ the\ percentage\ change\ in\ price\ since\ the\ daily\ opening\ price.^
+
+[^58]: ^The\ quantmod\ function\ getSymbols(\'X\')\ returns\ an\ time\ series\ object\ named\ X.\ The\ get\ function\ retrieves\ the\ name\ of\ the\ object\ and\ passes\ it\ to\ the\ Cl\ function\ and\ then\ the\ time\ series\ is\ graphed\ by\ dygraph.\ The\ code\ is\ a\ bit\ complicated,\ but\ necessary\ to\ generalize\ it\ for\ use\ with\ an\ interactive\ dashboard.^

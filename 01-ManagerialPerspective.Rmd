@@ -3,14 +3,15 @@ title: "Data Management: Databases and Organizations"
 author: "Dr. Rick Watson"
 site: "bookdown::bookdown_site"
 output:
-  bookdown::gitbook: default
+  bookdown::gitbook: 
+    split_by: section
 documentclass: book
 ---
 
 # Section 1: The Managerial Perspective {-}
 
-> *People only see what they are prepared to see*.
->
+*People only see what they are prepared to see*.
+
 > Ralph Waldo Emerson, *Journals*, 1863
 
 Organizations are accumulating vast volumes of data because of the ease
@@ -102,10 +103,10 @@ also coverage of data in external memory. The process side of
 organizational memory is typically covered in a systems analysis and
 design or a business process management course.
 
-## Chapter 1: Managing Data  {-}
+## 1. Managing Data  {-}
 
-> *All the value of this company is in its people. If you burned down all our plants, and we just kept our people and our information files, we should soon be as strong as ever.*
->
+*All the value of this company is in its people. If you burned down all our plants, and we just kept our people and our information files, we should soon be as strong as ever.*
+
 > Thomas Watson, Jr., former chairman of IBM^2^
 
 ### Learning objectives {-}
@@ -1184,12 +1185,11 @@ system. *Harvard Business Review*, 76(4), 121-131.
     system is most important and why. Write up your findings and your
     conclusion.
 
-## Information {-}
+## 2. Information {-}
 
-> *Effective information management must begin by thinking about how people use information---not with how people use machines.*
->
-> Davenport, T. H. (1994). Saving IT's soul: human-centered information
-> management. *Harvard Business Review,* 72(2), 119-131.
+*Effective information management must begin by thinking about how people use information---not with how people use machines.*
+
+> Davenport, T. H. (1994). Saving IT's soul: human-centered information management. *Harvard Business Review,* 72(2), 119-131.
 
 ### Learning objectives {-}
 
@@ -2303,7 +2303,7 @@ intellect. *Academy of Management Executive* 10 (3):7-27.
 
 27. What type of knowledge is likely to make you most valuable?
 
-#### Case questions
+#### Case questions {-}
 
 Imagine you are the new owner of The Expeditioner.
 

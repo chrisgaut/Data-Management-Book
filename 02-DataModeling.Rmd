@@ -6,10 +6,9 @@ library(DBI)
 db = dbConnect(RSQLite::SQLite(), dbname = "sql.sqlite")
 ```
 
-> *It is a capital mistake to theorize before one has data.*
-> 
-> Sir Arthur Conan Doyle, "A Scandal in Bohemia," *The Adventures of
-> Sherlock Holmes*, 1891
+*It is a capital mistake to theorize before one has data.*
+
+> Sir Arthur Conan Doyle, "A Scandal in Bohemia," *The Adventures of Sherlock Holmes*, 1891
 
 The application backlog, a large number of requests for new information
 systems, has been a recurring problem in many organizations for decades.
@@ -82,10 +81,10 @@ language** (DML), which is used to maintain and query a database.
 Subsequent chapters in this section cover advanced data modeling
 concepts and querying capabilities.
 
-## Chapter 3: The Single Entity {-}
+## 3. The Single Entity {-}
 
-> *I want to be alone.*
->
+*I want to be alone.*
+
 > Attributed to Greta Garbo
 
 #### Learning Objectives {-}
@@ -1621,10 +1620,10 @@ SELECT trknum, trktitle, trklength FROM track
 | 4.  What is the data model missing?                                     |
 +-------------------------------------------------------------------------+
 
-## Chapter 4: The One-to-Many Relationship {-}
+## 4. The One-to-Many Relationship {-}
 
-> *Cow of many---well milked and badly fed.*
->
+*Cow of many---well milked and badly fed.*
+
 > Spanish proverb
 
 #### Learning Objectives {-}
@@ -2863,10 +2862,10 @@ SELECT cdtitle, SUM(trklength) AS sumtrklen FROM track JOIN cd
 | 3. Could cdlblid be used as an identifier for CD?        |
 +----------------------------------------------------------+
 
-## Chapter 5: The Many-to-Many Relationship {-}
+## 5. The Many-to-Many Relationship {-}
 
-> *Fearful concatenation of circumstances.*
->
+*Fearful concatenation of circumstances.*
+
 > Daniel Webster
 
 #### Learning objectives {-}
@@ -3889,10 +3888,10 @@ Steps" by entering the data in the table, person-recording.
 | 4.  What is the data model missing?                                       |
 +---------------------------------------------------------------------------+
 
-## Chapter 6: One-to-One and Recursive Relationships {-}
+## 6. One-to-One and Recursive Relationships {-}
 
-> *Self-reflection is the school of wisdom.*
-> 
+*Self-reflection is the school of wisdom.*
+
 > Baltasar Gracián, *The Art of Worldly Wisdom*, 1647
 
 #### Learning objectives {-}
@@ -4750,10 +4749,10 @@ the following figure.
 | 4.	How might you extend the data model?                                                                                                                               |
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-## Chapter 7: Data Modeling {-}
+## 7. Data Modeling {-}
 
-> *Man is a knot, a web, a mesh into which relationships are tied. Only those relationships matter.*
->
+*Man is a knot, a web, a mesh into which relationships are tied. Only those relationships matter.*
+
 > Antoine de Saint-Exupéry in *Flight to Arras*
 
 ####å Learning objectives {-}
@@ -6931,10 +6930,10 @@ Write the SQL CREATE statements for the following data models.
 5. Under what circumstances might you use choose a fixed tree over a
     1:m recursive data model?
 
-## Chapter 8: Normalization and Other Data Modeling Methods {-}
+## 8. Normalization and Other Data Modeling Methods {-}
 
-> *There are many paths to the top of the mountain, but the view is always the same.*
-> 
+*There are many paths to the top of the mountain, but the view is always the same.*
+
 > Chinese Proverb
 
 #### Learning objectives {-}
@@ -7630,7 +7629,7 @@ database theory. *Communications of the ACM 26 (2): 120-125.*
 3. How do E-R and IDEF1X differ from the data modeling method of this
     text?
 
-### Normalization and data modeling 
+##### Normalization and data modeling {-}
 
 Using normalization, E-R, or IDEF1X, create data models from the
 following narratives, which are sometimes intentionally incomplete. You
@@ -7679,10 +7678,10 @@ attributes of each entity.
     purposes, the company records both phone numbers, start time, end
     time, and date of call.
 
-## Chapter 9: The Relational Model and Relational Algebra {-}
+## 9. The Relational Model and Relational Algebra {-}
 
-> *Nothing is so practical as a good theory*.
-> 
+*Nothing is so practical as a good theory*.
+
 > K. Lewin, 1945
 
 #### Learning objectives {-}
@@ -8624,10 +8623,10 @@ productivity. *Communications of the ACM* 25 (2):109--117.
     g. List the names of donors whose last name is Watson and who live in
     Athens, GA.
 
-## Chapter 10: SQL {-}
+## 10. SQL {-}
 
-> *The questing beast*.
->
+*The questing beast*.
+
 > Sir Thomas Malory, *Le Morte D'Arthur*, 1470
 
 #### Learning objectives {-}

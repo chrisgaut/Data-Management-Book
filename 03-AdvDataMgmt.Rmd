@@ -1,9 +1,9 @@
 
 # Section 3: Advanced Data Management {-}
 
-> *Advancement only comes with habitually doing more than you are asked.*
->
-> Gary Ryan Blair.^1^
+*Advancement only comes with habitually doing more than you are asked.*
+
+> Gary Ryan Blair.[^1]
 
 The wiring of the world has given us ubiquitous networks and broadened
 the scope of issues that data management must now embrace. In everyday
@@ -64,9 +64,8 @@ The section covers the following topics.
 
 ## 11. Spatial and Temporal Data Management {-}
 
-> *Nothing puzzles me more than time and space; and yet nothing troubles
-me less, as I never think about them.*
->
+*Nothing puzzles me more than time and space; and yet nothing troubles me less, as I never think about them.*
+
 > Charles Lamb, 1810.
 
 ### Learning objectives {-}
@@ -807,8 +806,8 @@ systems. San Francisco: Morgan Kaufmann Publishers.
 
 ## 12. Graph Databases {-}
 
-> *When we use a network, the most important asset we get is access to one another.*
-> 
+*When we use a network, the most important asset we get is access to one another.*
+
 > Clay Shirky, *Cognitive Surplus: Creativity and Generosity in a Connected Age*, 2010
 
 #### Learning objectives {-}
@@ -1712,8 +1711,8 @@ The graph model for NorthWinds follows the questions.
 
 ## 13. XML: Managing Data Exchange {-}
 
-> *Words can have no single fixed meaning. Like wayward electrons, theycan spin away from their initial orbit and enter a wider magnetic field. No one owns them or has a proprietary right to dictate how they will be used.*
-> 
+*Words can have no single fixed meaning. Like wayward electrons, theycan spin away from their initial orbit and enter a wider magnetic field. No one owns them or has a proprietary right to dictate how they will be used.*
+
 > David Lehman, End of the Word, 1991
 
 #### Learning objectives {-}
@@ -2856,7 +2855,7 @@ Watson, R. T., and others. 2004. *XML: managing data exchange*:\
 
 ## 14. Organizational Intelligence {-}
 
-> *There are three kinds of intelligence: One kind understands things for itself, the other appreciates what others can understand, the third understands neither for itself nor through others. This first kind is excellent, the second good, and the third kind useless.*
+*There are three kinds of intelligence: One kind understands things for itself, the other appreciates what others can understand, the third understands neither for itself nor through others. This first kind is excellent, the second good, and the third kind useless.*
 
 > Machiavelli, *The Prince*, 1513
 
@@ -4071,8 +4070,8 @@ support. *Computerworld*, 87--89.
 
 ## 15. Introduction to R {-}
 
-> *Statistics are no substitute for judgment*
-> 
+*Statistics are no substitute for judgment*
+
 > Henry Clay, U.S. congressman and senator
 
 #### Learning objectives {-}
@@ -5069,8 +5068,8 @@ Wickham, H., & Grolemund, G. (2017). R for data science: O'Reilly.
 
 ## 16. Data visualization {-}
 
-> *The commonality between science and art is in trying to see profoundly - to develop strategies of seeing and showing.*
-> 
+*The commonality between science and art is in trying to see profoundly - to develop strategies of seeing and showing.*
+
 > Edward Tufte, *The Visual Display of Quantitative Information*
 
 #### Learning objectives {-}
@@ -5898,8 +5897,8 @@ e <-  read.csv(eurl,sep=',',header=T)
 
 ## 17. Text mining & natural language processing {-}
 
-> *From now on I will consider a language to be a set (finite or infinite) of sentences, each finite in length and constructed out of a finite set of elements. All natural languages in their spoken or written form are languages in this sense.*
-> 
+*From now on I will consider a language to be a set (finite or infinite) of sentences, each finite in length and constructed out of a finite set of elements. All natural languages in their spoken or written form are languages in this sense.*
+ 
 > Noam Chomsky, *Syntactic Structures*
 
 #### Learning objectives {-}
@@ -6031,7 +6030,7 @@ library(stringr)
 str_count("The dead batteries were given out free of charge", "[[:space:]]+") + 1
 ```
 
-### Sentiment analysis
+### Sentiment analysis {-}
 
 Sentiment analysis is a popular and simple method of measuring aggregate
 feeling. In its simplest form, it is computed by giving a score of +1 to
@@ -6173,16 +6172,18 @@ i <-  begin
 # read the letters
 while (i < 2013) {
   y <- as.character(i)
-# create the file name
+  # create the file name
   f <- str_c('http://www.richardtwatson.com/BuffettLetters/',y, 'ltr.txt',delim='')
-# read the letter as on large string
+  # read the letter as on large string
   d <-  readChar(f,nchars=1e6)
-# add letter to the data frame
-  df[i-begin+1,] <-  d
+  # add letter to the data frame
+  df[i-begin+1,1] <-  i
+  df[i-begin+1,2] <-  d
   i <-  i + 1
 }
+colnames(df) <- c('doc_id', 'text')
 # create the corpus
-letters <-  Corpus(DataframeSource(as.data.frame(df), encoding = "UTF-8"))
+letters <-  Corpus(DataframeSource(df))
 ```
 
 #### Readability {-}
@@ -6209,6 +6210,7 @@ function. Then complete the calculation.
 
 ```{r, message=FALSE}
 library(koRpus)
+library(koRpus.lang.en)
 #tokenize the first letter in the corpus after converting to character vector
 txt <-  letters[[1]][1] # first element in the list
 tagged.text <- tokenize(as.character(txt),format="obj",lang="en")
@@ -6310,7 +6312,7 @@ stem to *fish*. As a stemmer generally works by suffix stripping, so
 available for different languages, and thus the language must be
 specified.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # stem the document -- might take a while to run
 stem.letters <- tm_map(clean.letters,stemDocument, language = "english")
 ```
@@ -6324,7 +6326,7 @@ for the most frequent match, "first" for the first found completion, and
 "longest" and "shortest" for the longest and shortest, respectively,
 completion in terms of characters
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # stem completion -- might take a while to run
 stem.letters <- tm_map(stem.letters,stemCompletion, dictionary=clean.letters, type=c("prevalent"))
 ```
@@ -6344,7 +6346,7 @@ in one of two forms.
 * A **term-document matrix** contains one row for each term and one column
 for each document.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 tdm <-  TermDocumentMatrix(stem.letters,control = list(minWordLength=3))
 dim(tdm)
 # report those words occurring more than 100 times
@@ -6354,7 +6356,7 @@ findFreqTerms(tdm, lowfreq = 100, highfreq = Inf)
 * A **document-term matrix** contains one row for each document and one
 column for each term.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 dtm <-  DocumentTermMatrix(stem.letters,control = list(minWordLength=3))
 dim(dtm)
 ```
@@ -6372,7 +6374,7 @@ tf~td~ = number of times term t occurs in document d.
 
 Here is the R code for determining the frequency of words in a corpus.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 tdm <-  TermDocumentMatrix(stem.letters,control = list(minWordLength=3))
 # convert term document matrix to a regular matrix to get frequencies of words
 m <-  as.matrix(tdm)
@@ -6387,7 +6389,7 @@ visually. As you can see, there is a very long and thin tail because a
 very small number of words occur frequently. Note that this plot shows
 the distribution of words after the removal of stop words.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 require(ggplot2)
 # get the names corresponding to the words
 names <- names(v)
@@ -6398,7 +6400,7 @@ ggplot(d,aes(freq)) + geom_density(fill="salmon") + xlab("Frequency")
 
 A word cloud is way of visualizing the most frequent words.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 require(wordcloud)
 # select the color palette
 pal = brewer.pal(5,"Accent")
@@ -6425,7 +6427,7 @@ association is -1.
 A simple example illustrates the concept. The following code sets up a
 corpus of five elementary documents.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 data <-  c("word1", "word1 word2","word1 word2 word3","word1 word2 word3 word4","word1 word2 word3 word4 word5")
 frame <-  data.frame(data)
 test <-  Corpus(DataframeSource(frame, encoding = "UTF-8"))
@@ -6436,7 +6438,7 @@ as.matrix(tdm)
 We compute the correlation of rows to get a measure of association
 across documents.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # Correlation between word2 and word3, word4, and word5
 cor(c(0,1,1,1,1),c(0,0,1,1,1))
 cor(c(0,1,1,1,1),c(0,0,0,1,1))
@@ -6447,7 +6449,7 @@ Alternatively, use the findAssocs function, which computes all
 correlations between a given term and all terms in the term-document
 matrix and reports those higher than the correlation threshold.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # find associations greater than 0.1
 findAssocs(tdm,"word2",0.1)
 ```
@@ -6455,7 +6457,7 @@ findAssocs(tdm,"word2",0.1)
 Now that you have an understanding of how association works across
 documents, here is an example for the corpus of Buffett letters.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # Select the first ten letters
 tdm <-  TermDocumentMatrix(stem.letters[1:10])
 # compute the associations
@@ -6495,7 +6497,7 @@ zero. In order to reduce the computations required, sparse terms are
 removed from the matrix. You can vary the sparse parameter to see how
 the clusters vary.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # Cluster analysis
 # name the columns for the letter's year
 colnames(tdm) <-  1998:2012
@@ -6557,7 +6559,7 @@ occurs in only one document out of 15, its idf = 3.91.
 To calculate and display the idf for the letters corpus, we can use the
 following R script.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # calculate idf for each term
 idf <-  log2(nDocs(dtm)/col_sums(dtm > 0))
 # create dataframe for graphing
@@ -6592,7 +6594,7 @@ The mean term frequency-inverse document frequency (tf-idf) is used to
 select the vocabulary for topic modeling. We use the median value of
 tf-idf for all terms as a threshold.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 require(topicmodels)
 require(slam)
 # calculate tf-idf for each term
@@ -6614,7 +6616,7 @@ keeping only those terms above the threshold and eliminating rows that
 have zero terms. Because the median is a measure of central tendency,
 this approach reduces the number of columns by roughly half.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # select columns with tf-idf > median
 dtm <- dtm[,tfidf >= median(tfidf)]
 #select rows with rowsum > 0
@@ -6632,7 +6634,7 @@ typically review the output of several models and make a judgment on
 which model appears to provide a realistic set of distinct topics. Here
 is some code that starts with five topics.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 # set number of topics to extract
 k <- 5 # number of topics 
 SEED <- 2010 # seed for initializing the model rather than the default random
@@ -6853,8 +6855,8 @@ Greenwich, CT: Manning Publications.
 
 ## 18. Cluster computing {-}
 
-> *Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to humans what we want the computer to do*
-> 
+*Let us change our traditional attitude to the construction of programs: Instead of imagining that our main task is to instruct a computer what to do, let us concentrate rather on explaining to humans what we want the computer to do*
+
 > Donald E. Knuth, *Literate Programming*, 1984
 
 #### Learning objectives {-}
@@ -7218,7 +7220,7 @@ version of Java on your machine.[^51] Use RStudio to install sparklyr.
 For developing and testing on your computer, install a local version of
 Spark.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 library(sparklyr)
 spark_install(version='2.4')
 ```
@@ -7227,7 +7229,7 @@ Use the `spark_connect` function to connect to Spark either locally or on
 a remote Spark cluster. The following code shows how to specify local
 Spark connection (sc).
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 library(sparklyr)
 sc <- spark_connect(master = "local")
 ```
@@ -7241,7 +7243,7 @@ particular temperature occurred. R
 Average monthly temperatures since 1869 are read, and the temperature
 rounded to an integer for the convenience of tabulation.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 library(dplyr)
 library(readr)
 url <-  "http://www.richardtwatson.com/data/centralparktemps.txt"
@@ -7261,7 +7263,7 @@ creation of a Spark connection (sc) and copying the R tibble to Spark
 with copy-to. Also, note that you need to sort the resulting tibble,
 which is not required in regular R.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 library(dplyr)
 library(readr)
 spark_install(version='2.4')
@@ -7298,7 +7300,7 @@ single file.
 
 ##### R {-}
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 library(dplyr)
 library(readr)
 url <-  "http://www.richardtwatson.com/data/centralparktemps.txt"
@@ -7315,7 +7317,7 @@ t %>%
 
 Again, the use of dplyr makes the conversion to Spark simple.
 
-```{r, message = FALSE}
+```{r, eval = FALSE}
 library(sparklyr)
 library(tidyverse)
 spark_install(version='2.4')
@@ -7412,11 +7414,9 @@ Marz, N., & Warren, J. (2012). *Big Data*: Manning Publications.
 
 ## 19. Dashboards {-}
 
-*I think, aesthetically, car design is so interesting - the dashboards,
-the steering wheels, and the beauty of the mechanics. I don\'t know how
-any of it works, I don\'t want to know, but it\'s inspirational.*
+*I think, aesthetically, car design is so interesting - the dashboards, the steering wheels, and the beauty of the mechanics. I don\'t know how any of it works, I don\'t want to know, but it\'s inspirational.*
 
-Paloma Picasso, designer, 2013[^56]
+> Paloma Picasso, designer, 2013[^56]
 
 #### Learning objectives {-}
 

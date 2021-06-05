@@ -1,8 +1,8 @@
 
-# Managing Organizational Memory {-}
+# Section 4: Managing Organizational Memory {-}
 
-> *Every one complains of his memory, none of his judgment.*
->
+*Every one complains of his memory, none of his judgment.*
+
 > François Duc de La Rochefoucauld "Sentences et Maximes," Morales No. 89 1678
 
 In order to manage data, you need a database architecture, a design for
@@ -68,8 +68,8 @@ organization.
 
 ## 20. Data Structure and Storage {-}
 
-> *The modern age has a false sense of superiority because it relies on the mass of knowledge that it can use, but what is important is the extent to which knowledge is organized and mastered.*
-> 
+*The modern age has a false sense of superiority because it relies on the mass of knowledge that it can use, but what is important is the extent to which knowledge is organized and mastered.*
+
 > Goethe, 1810
 
 #### Learning objectives {-}
@@ -1509,8 +1509,8 @@ techniques, some data are lost during compression.
 
 ## 21. Data Processing Architectures {-}
 
-> *The difficulty in life is the choice*.
->
+*The difficulty in life is the choice*.
+
 > George Moore, *The Bending of the Bough*, 1900
 
 #### Learning Objectives {-}
@@ -4691,7 +4691,7 @@ Assume we know that a professor in the IS department is aged 40 to 50,
 is single, and attended the University of Minnesota. Consider the
 results of the following set of queries.[^19]
 
-```{sql, eval = false}
+```{sql, eval = FALSE}
 SELECT COUNT(*) from faculty
 	WHERE dept = 'MIS'
 	AND age >= 40 AND age <= 50; 
@@ -4701,7 +4701,7 @@ SELECT COUNT(*) from faculty
   10
   ----
 
-```{sql, eval = false}
+```{sql, eval = FALSE}
 SELECT COUNT(*) FROM faculty
 	WHERE dept = 'MIS'
 	AND age >= 40 AND age <= 50
@@ -4712,7 +4712,7 @@ SELECT COUNT(*) FROM faculty
   2
   ---
 
-```{sql, eval = false}
+```{sql, eval = FALSE}
 SELECT COUNT(*) FROM faculty
 	WHERE = 'MIS'
 	AND age >= 40 AND age <= 50;
@@ -4724,7 +4724,7 @@ SELECT COUNT(*) FROM faculty
   1
   ---
 
-```{sql, eval = false}
+```{sql, eval = FALSE}
 SELECT AVG(salary) FROM faculty
 	WHERE dept = 'MIS'
 	AND age >= 40 AND age <= 50

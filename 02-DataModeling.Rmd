@@ -147,7 +147,7 @@ will find it easier to monitor and analyze threats to financial
 stability and risk managers will be more able evaluate their companies'
 risks.
 
-Source: www.ny.frb.org/research/epr/2014/1403flem.pdf
+*Source: www.ny.frb.org/research/epr/2014/1403flem.pdf*
 
 The tables in a relational database are **connected** or **related** by
 means of the data in the tables. You will learn, in the next chapter,
@@ -200,7 +200,7 @@ productivity of programmers by moving beyond the record-at-a-time
 processing that is found in most programming languages. Consequently,
 the relational model supports set processing (multiple
 records-at-a-time), which is most frequently implemented as **Structured
-Query Language (SQL).**^1^
+Query Language (SQL).**[^1]
 
 The relational model separates the logical design of a database from its
 physical storage. This notion of **data independence** simplifies data
@@ -254,7 +254,7 @@ An entity has characteristics or attributes. An **attribute** is a
 discrete element of data; it is not usually broken down into smaller
 components. Attributes identify data we want to store. Some attributes
 of the entity SHARE are *identification code*, *firm name*, *price*,
-*quantity owned*, *dividend*, and *price-to-earnings ratio*.^2^
+*quantity owned*, *dividend*, and *price-to-earnings ratio*.[^2]
 Attributes are shown below the entity's name. Notice that we refer to
 *share price*, rather than *price*, to avoid confusion if there should
 be another entity with an attribute called *price*. Attribute names must
@@ -348,9 +348,9 @@ PostgreSQL.
 In this book, MySQL is the relational database for teaching SQL. Because
 SQL is a standard, it does not matter which implementation of the
 relational model you use as the SQL language is common across both the
-proprietary and open variants.^3^
+proprietary and open variants.[^3]
 
-SQL uses the CREATE^4^ statement to define a table. It is not a
+SQL uses the CREATE[^4] statement to define a table. It is not a
 particularly friendly command, and most products have friendlier
 interfaces for defining tables. However, it is important to learn the
 standard, because this is the command that SQL understands. Also, a
@@ -363,7 +363,7 @@ following example.
 
 #### Defining a table {-}
 
-The CREATE command to establish a table called `share`^5^ is as follows:
+The CREATE command to establish a table called `share`[^5] is as follows:
 
 ```{sql, connection = db, eval = FALSE}
 CREATE TABLE share (
@@ -454,10 +454,10 @@ than five characters is a good rule-of-thumb).
 ### Data modeling with MySQL Workbench {-}
 
 MySQL Workbench is a professional quality, open source, cross-platform
-tool for data modeling and SQL querying.^6^ In this text, you will also
+tool for data modeling and SQL querying.[^6] In this text, you will also
 learn some of the features of Workbench that support data modeling and
 using SQL. You will find it helpful to complete the MySQL Workbench
-tutorial on creating a data model^7^ prior to further reading, as we
+tutorial on creating a data model[^7] prior to further reading, as we
 will assume you have such proficiency.
 
 *The entity share created with MySQL Workbench*
@@ -473,7 +473,7 @@ null, whereas a closed blue diamond indicate the column must have a
 value, as with `shrfirm` in this case.
 
 When specifying columns in Workbench you must also indicate the
-datatype. We opt to turn off the display of a column's datatype^8^ in a
+datatype. We opt to turn off the display of a column's datatype[^8] in a
 model to maintain focus on the entity.
 
 A major advantage of using a tool such as Workbench is that it will
@@ -540,7 +540,7 @@ the relational model, an identifier becomes a primary key, a column that
 guarantees that each row of the table can be uniquely addressed.
 
 MySQL Workbench offers a spreadsheet interface for entering data, as
-explained in the tutorial on adding data to a database.^9^
+explained in the tutorial on adding data to a database.[^9]
 
 *Inserting rows with MySQL Workbench*
 
@@ -1402,7 +1402,7 @@ DELETE or modified with UPDATE.
 
 8.  What is the entity integrity rule?
 
-#### CD library case^10^ {-}
+#### CD library case[^10] {-}
 
 Ajay, a DJ in the student-operated radio station at his university, is
 impressed by the station's large collection of CDs but is frustrated by
@@ -1918,7 +1918,7 @@ foreign key when data modeling because it can be inferred. You will
 observe some additional symbols on the line between the two entities,
 and these will be explained later, but take note of the crow's foot
 indicating the 1:m relationship between nation and stock. Because
-Workbench can generate automatically the SQL to create the tables,^11^
+Workbench can generate automatically the SQL to create the tables,[^11]
 we use lowercase table names and abbreviated column names.
 
 *Specifying a 1:m relationship in MySQL Workbench*
@@ -2198,7 +2198,7 @@ now continue to learn some more of its features.
 
 The \^ (carat) is the symbol for NOT. It is used when we want to find a
 string not containing a character in one or more specified strings. For
-example, \[\^a-f\] means any character not in the set containing a, b,
+example, [\^a-f] means any character not in the set containing a, b,
 c, d, e, or f.
 
 *List the names of nations with non-alphabetic characters in their names*
@@ -2252,7 +2252,7 @@ SELECT stkfirm FROM stock WHERE stkfirm REGEXP '[s]{2}|[n]{2}';
 
 If you are interested in find a string containing several specified
 string, you can use the square brackets to indicate the sought strings.
-For example, \[ea\] means any character from the set containing e and a.
+For example, [ea] means any character from the set containing e and a.
 
 *List the names of firms with names that include 'inia' or 'onia'.*
 
@@ -2291,7 +2291,7 @@ characters;
 * t indicates what the next character, the third, must be.
 
 You have seen a few of the features of a very powerful tool. To learn
-more about regular expressions, see regexlib.com,^12^ which contains a
+more about regular expressions, see regexlib.com,[^12] which contains a
 library of regular expressions and a feature for finding expressions to
 solve specific problems. Check out the regular expression for checking
 whether a character string is a valid email address.
@@ -2930,7 +2930,6 @@ retailing as a line item, which links an item and a sale.
 
 +------------------+-------------+----------+------------+-------+--+
 | The Expeditioner |             |          |            |       |  |
-| ---------------- |             |          |            |       |  |
 |                  |             |          |            |       |  |
 | Sale of Goods    |             |          |            |       |  |
 +==================+=============+==========+============+=======+==+
@@ -3051,7 +3050,7 @@ line item entry refers to only one sale.
 | government considered them one and the same and issued both the same      |
 | Social Security number (SSN), a nine-digit identifier of U.S. residents.  |
 | Now Sarah Lee Ferguson Boles and Sarah Lee Ferguson Johnson share the     |
-| same SSN.^13^                                                             |
+| same SSN.[^13^]                                                            |
 |                                                                           |
 | Mrs. Boles became aware of her SSN twin in 1987 when the Internal         |
 | Revenue Service claimed there was a discrepancy in her reported income.   |
@@ -3453,7 +3452,7 @@ List items that were sold on January 16, 2011, and are brown.
 
 This query uses the same two tables as the previous query. In this case,
 INTERSECT (i.e., and) then combines the results of the tables including
-***only*** rows in both tables and excluding duplicates.^14^
+***only*** rows in both tables and excluding duplicates.[^14]
 
 ```{sql, connection = db, eval = FALSE}
 SELECT itemname FROM item JOIN lineitem
@@ -4755,7 +4754,7 @@ the following figure.
 
 > Antoine de Saint-Exupéry in *Flight to Arras*
 
-####å Learning objectives {-}
+#### Learning objectives {-}
 
 Students completing this chapter will be able to create a well-formed,
 high-fidelity data model.
@@ -4766,7 +4765,7 @@ Modeling is widely used within business to learn about organizational
 problems and design solutions. To understand where data modeling fits
 within the broader context, it is useful to review the full range of
 modeling activities. The types of modeling methods follow the 5W-H model
-of journalism.^15^
+of journalism.[^15]
 
                                     ***Scope***      ***Model***            ***Technology***       
   ------------------- ------------- ---------------- ---------------------- ----------------------
@@ -4961,7 +4960,7 @@ relationship as firm's boss.
 
 ![](Figures/Chapter 7/relationship labeling.png)
 
-#### Identifier
+#### Identifier {-}
 
 An identifier uniquely distinguishes an instance of an entity. An
 identifier can be one or more attributes and may include the identifier
@@ -5088,7 +5087,7 @@ extra cost.
 
 ![](Figures/Chapter 7/revised NATION-STOCK.png)
 
-#### A lesson in pure geography
+#### A lesson in pure geography {-}
 
 A data model must be an accurate representation of the world you want to
 model. The data model must account for all the exceptions---there should
@@ -5350,7 +5349,7 @@ creating a separate entity, PSLTEXT, for the code and its text.
 
 ![](Figures/Chapter 7/history-4.png)
 
-#### A ménage à trois for entities
+#### A ménage à trois for entities {-}
 
 Consider aircraft leasing. A plane is leased to an airline for a
 specific period. When a lease expires, the plane can be leased to
@@ -5571,7 +5570,7 @@ every assembly must have associated products.
 
 ![](Figures/Chapter 7/rec-m-and-m-modality.png)
 
-##### Summary
+##### Summary {-}
 
 Modality adds additional information to a data model, and once you have
 grasped the fundamental ideas of entities and relationships, it is quite
@@ -5606,7 +5605,7 @@ shows two independent entities linked in a 1:m relationship.
 
 ![](Figures/Chapter 4/nation-stock.png)
 
-##### Weak or dependent entity
+##### Weak or dependent entity {-}
 
 A weak entity (also known as a dependent entity) relies on another
 entity for its existence and identification. It is recognized by a plus
@@ -5620,7 +5619,7 @@ independent one.
 
 ![](Figures/Chapter 7/region-city.png)
 
-##### Associative entity
+##### Associative entity {-}
 
 Associative entities are by-products of m:m relationships. They are
 typically found between independent entities. Associative entities
@@ -5717,7 +5716,7 @@ entities.
 
 ![](Figures/Chapter 7/generalizationanimal.png)
 
-#### Aggregation
+#### Aggregation {-}
 
 Aggregation is a part-whole relationship between two entities. Common
 phrases used to describe an aggregation are "consists of," "contains,"
@@ -5752,7 +5751,7 @@ shown in the following figure.
 
 ![](Figures/Chapter 7/compaggregate.png)
 
-#### Data modeling hints
+#### Data modeling hints {-}
 
 A high-fidelity data model takes time to develop. The client must
 explain the problem fully so that the database designer can understand
@@ -5840,7 +5839,7 @@ predecessor of any instance), then use a 1:1 recursive relationship.
 
 ![](Figures/Chapter 6/recursive-1-and-1.png)
 
-#### Attributes and consistency
+#### Attributes and consistency {-}
 
 Attributes must be consistent, retaining the same meaning for every
 instance. An example of an inconsistent attribute would be an attribute
@@ -8033,7 +8032,7 @@ nation's name and its exchange rate, for example, you would use this
 relational algebra command:
 
 ```{sql, connection = db, eval = FALSE}
-rates := nation\[natname, exchrate\]
+rates := nation[natname, exchrate]
 ```
 
 #### Product {-}
@@ -8243,7 +8242,7 @@ A very simple report of all columns in the table share.
 A projection of two columns from `share`.
 
   -------------------------- ----------------------------------
-  share \[shrfirm, shrpe\]   SELECT shrfirm, shrpe FROM share
+  share [shrfirm, shrpe]   SELECT shrfirm, shrpe FROM share
   -------------------------- ----------------------------------
 
 *Get all shares with a price-earnings ratio less than 12.*
@@ -8264,7 +8263,7 @@ expressed within parentheses.
 +---------------------------------------+---------------------------+
 | (share WHERE shrqty \>= 100000)       | SELECT shrfirm, shrprice, |
 |                                       |                           |
-| \[shrfirm, shrprice, shrqty, shrdiv\] | shrqty, shrdiv FROM share |
+| [shrfirm, shrprice, shrqty, shrdiv]   | shrqty, shrdiv FROM share |
 |                                       |                           |
 |                                       | WHERE shrqty \>= 100000   |
 +---------------------------------------+---------------------------+
@@ -8308,11 +8307,11 @@ A join of `stock` and `nation` and projection of specified attributes.
 |                              |                             |
 | nation.natcode )             | stkprice\*stkqty\*exchrate  |
 |                              |                             |
-| \[natname, stkfirm,          | FROM stock JOIN nation      |
+| [natname, stkfirm,           | FROM stock JOIN nation      |
 |                              |                             |
 | stkprice, stkqty, exchrate,  | ON stock.natcode =          |
 |                              |                             |
-| stkprice\*stkqty\*exchrate\] | nation.natcode              |
+| stkprice\*stkqty\*exchrate]  | nation.natcode              |
 +------------------------------+-----------------------------+
 
 *Find the items that have appeared in all sales.*
@@ -8321,11 +8320,11 @@ Divide reports the item numbers of items appearing in all sales, and
 this result is then joined with `item` to report these items.
 
 +---------------------------------+-----------------------------------+
-| ((lineitem\[itemno, saleno\]    | SELECT itemno, itemname FROM item |
+| ((lineitem[itemno, saleno]      | SELECT itemno, itemname FROM item |
 |                                 |                                   |
-| DIVIDEBY sale\[saleno\])        | WHERE NOT EXISTS                  |
+| DIVIDEBY sale[saleno])          | WHERE NOT EXISTS                  |
 |                                 |                                   |
-| JOIN item) \[itemno, itemname\] | (SELECT \* FROM sale              |
+| JOIN item) [itemno, itemname]   | (SELECT \* FROM sale              |
 |                                 |                                   |
 |                                 | WHERE NOT EXISTS                  |
 |                                 |                                   |
@@ -8370,7 +8369,7 @@ which implies that SQL is relationally complete.
 | Restrict              | A WHERE condition     | SELECT \* FROM A      |
 |                       |                       | WHERE condition       |
 +-----------------------+-----------------------+-----------------------+
-| Project               | A \[X\]               | SELECT X FROM A       |
+| Project               | A [X]                 | SELECT X FROM A       |
 +-----------------------+-----------------------+-----------------------+
 | Product               | A TIMES B             | SELECT \* from A, B   |
 +-----------------------+-----------------------+-----------------------+
@@ -9452,7 +9451,7 @@ Alternatively, we can diagram the structure of SELECT.
 
 *Structure of SELECT*
 
-![]() *MISSING*
+![](Figures/Chapter 10/select-structure.png)
 
 ##### Product {-}
 
@@ -9641,8 +9640,8 @@ As you now realize, join can be thought of as a product with a condition
 clause. There is no reason why this condition needs to be restricted to
 equality. There could easily be another comparison operator between the
 two columns. This general version is called a theta-join because theta
-is a variable that can take any value from the set \[=, \<\>, \>, \>=,
-\<, \<=\].
+is a variable that can take any value from the set [=, \<\>, \>, \>=,
+\<, \<=].
 
 As you discovered earlier, there are occasions when you need to join a
 table to itself. To do this, make two copies of the table first and give
@@ -9665,7 +9664,7 @@ which comes in three flavors as shown in the following figure.
 
 *Types of joins*
 
-![]() *MISSING*
+![](Figures/Chapter 10/types-of-joins.png)
 
 An outer join reports these matching rows and others depending on which
 form is used, as the following examples illustrate for a sample pair of
@@ -10148,7 +10147,7 @@ Alternatively, you can use an automatically generated pop-up window to
 run the procedure by clicking on the rightmost icon for the procedure
 under the Stored Procedures header.
 
-![]() *MISSING*
+![](Figures/Chapter 10/stored-procedures.png)
 
 +-------------------------------------------------------------------------+
 | *Skill builder*                                                         |
@@ -10416,7 +10415,7 @@ clarification where necessary.
 
   English                                                   SQL generated for MS Access
   --------------------------------------------------------- --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  Which movies have won best foreign film sorted by year?   SELECT DISTINCT \[Year\], \[Title\] FROM \[Awards\] INNER JOIN \[Movies\] ON \[Movies\].\[Movie ID\] = \[Awards\].\[Movie ID\] WHERE \[Category\]=\'Best Foreign Film\' and \[Status\]=\'Winner\' ORDER BY \[Year\] ASC;
+  Which movies have won best foreign film sorted by year?   SELECT DISTINCT [Year], [Title] FROM [Awards] INNER JOIN [Movies] ON [Movies].[Movie ID] = [Awards].[Movie ID] WHERE [Category]=\'Best Foreign Film\' and [Status]=\'Winner\' ORDER BY [Year] ASC;
 
 ### Connectivity and ODBC {-}
 
@@ -10779,7 +10778,7 @@ See
 [^12]: [[http://regexlib.com]{.underline}](http://regexlib.com)
 
 [^13]: "Two women share a name, birthday, and S.S. number!" *Athens
-    \[Georgia\] Daily News,* January 29 1990, 7A. Also, see
+    [Georgia] Daily News,* January 29 1990, 7A. Also, see
     [[wnyt.com/article/stories/S1589778.shtml?cat=10114]{.underline}](http://wnyt.com/article/stories/S1589778.shtml?cat=10114)
 
 [^14]: MySQL does not support INTERSECT. Use another AND in the WHERE

@@ -318,7 +318,7 @@ Once the database is established, we can do some queries to gain an
 understanding of the additional capability provided by the spatial
 additions. Before starting, examine the scale on the map and note that
 one grid unit is about 37.5 kilometers (23 miles). This also means that
-the area of one grid unit is 1406 km^2^ (526 square miles).
+the area of one grid unit is 1406 km[^2] (526 square miles).
 
 *What is the area of the Republic of Ireland?*
 
@@ -518,7 +518,7 @@ encloses D and E.
 
 *An R-tree with sample spatial data*
 
-![]() *MISSING*
+![](Figures/Chapter 11/r-tree.png)
 
 An example demonstrates how these data are used to accelerate searching.
 Using a mouse, a person could outline a region on a map displayed on a
@@ -534,7 +534,7 @@ would determine that E is the required object.
 
 *Searching an R-tree*
 
-![]() *MISSING*
+![](Figures/Chapter 11/searching-r-tree.png)
 
 As the preceding example illustrates, an R-tree has the same index
 structure as a B-tree. An R-tree stores data about *n*-dimensional
@@ -610,7 +610,7 @@ to determine whether the time value is anchored or unanchored.
 and **unanchored time** is a block of time with no specified start
 (e.g., 45 minutes).
 
-*Types of temporal data^3^*
+*Types of temporal data[^3]*
 
 ![](Figures/Chapter 13/temporal data.png)
 
@@ -925,12 +925,12 @@ pairs;
 **Cypher** is a combined graph description language (GDL) and graph
 query languages (GQL) for graph databases. Originally designed for the
 Neo4j graph database, it is now, in the form of Cypher 9, governed by
-the openCypher Implementation Group.^4^ Cypher is used in open source
+the openCypher Implementation Group.[^4] Cypher is used in open source
 projects (e.g., Apache Spark) and commercial products (e.g., SAP HANA).
 These actions indicate that Cypher will likely emerge as the industry
 standard language for labelled property graphs. In parallel, ISO has
 launched a project to create a new query language for graph databases
-based on openCypher and other GQLs.^5^
+based on openCypher and other GQLs.[^5]
 
 ### Neo4j -- a graph database implementation {-}
 
@@ -938,9 +938,9 @@ Neo4j is a popular labeled property graph database that supports Cypher
 and has a free community version. These features make it suitable for
 learning how to create and use a graph database. To get started:
 
-* Watch the video titled *Neo4j in Two Minutes;*^6^
+* Watch the video titled *Neo4j in Two Minutes;*[^6]
 
-* Download Neo4j Desktop^7^ and follow the installation and launch guide
+* Download Neo4j Desktop[^7] and follow the installation and launch guide
 to create a project and open your browser.
 
 ### A single node {-}
@@ -953,7 +953,7 @@ are distributed around the edges of the model in rectangles.
 
 *A graph data model for a portfolio of stocks*
 
-![]() *MISSING*
+![](Figures/Chapter 12/graph-portfolio.png)
 
 The Cypher code for creating a node for Stock is:
 
@@ -996,7 +996,7 @@ shown in the following figure.
 
 *Visualization of unrelated nodes in graph*
 
-![]() *MISSING*
+![](Figures/Chapter 12/unrelated-nodes.png)
 
 ### Querying a node {-}
 
@@ -1139,7 +1139,7 @@ Cypher includes functions for string handling and supports regular
 expressions. The string functions are typical of those in other
 programming languages, such as toLower(), toUpper(), toString(), left(),
 right(), substring(), and replace(). For a complete list, see the Cypher
-manual.^8
+manual.[^8]
 
 Cypher supports regular expression using the syntax of Java regular
 expressions.
@@ -1175,7 +1175,7 @@ then use the computed value in a second query.
 
 *Report all firms with a PE ratio greater than the average for the portfolio.*
 
-![]() *MISSING*
+![](Figures/Chapter 12/graph-nation-stock.png)
 
 ```{cypher, eval = FALSE}
 MATCH (s:Stock)
@@ -1324,7 +1324,7 @@ direction when querying rather than create two relations.
 
 *A graph data model for sales*
 
-![]() *MISSING*
+![](Figures/Chapter 12/graph-sales.png)
 
 The sales example discussed in Chapter Five illustrates how to handle a
 many-to-many situation. We first load these data and then define the
@@ -1358,7 +1358,7 @@ nodes with numbers, SaleNo, are sales.
 
 *A view of the relationships between sales and items.*
 
-![]() *MISSING*
+![](Figures/Chapter 12/view-sales-items.png)
 
 Here is an example of Cypher code for querying the graph for items and
 sales.
@@ -1424,7 +1424,7 @@ monarch succession as graph.
 
 *A graph model for monarch*
 
-![]() *MISSING*
+![](Figures/Chapter 12/graph-monarch.png)
 
 To assist with understanding the monarch model, we repeat the prior
 data.
@@ -1491,7 +1491,7 @@ The following figure shows the graph produced by Neo4j.
 
 *Monarch succession graph*
 
-![]() *MISSING*
+![](Figures/Chapter 12/monarch-succession.png)
 
 #### Querying a recursive relationship {-}
 
@@ -1613,7 +1613,7 @@ Graph databases are suitable for a wide range of common business
 problems. Graph analytics, in general, is useful for addressing three
 types of questions: How do things spread? What are the capacities,
 costs, and control points? How do things interact, and will that
-change?^9^
+change?[^9]
 
 ### Summary {-}
 
@@ -1707,7 +1707,7 @@ The graph model for NorthWinds follows the questions.
         
 *Graph model for NorthWinds*
 
-![]() *MISSING*
+![](Figures/Chapter 12/graph-NorthWinds)
 
 ## 13. XML: Managing Data Exchange {-}
 
@@ -1744,7 +1744,7 @@ The Standard Generalized Markup Language (SGML) was designed to reduce
 the cost and increase the efficiency of document management. Its child,
 XML, has essentially replaced SGML. For example, the second edition of
 the *Oxford English Dictionary* was specified in SGML, and the third
-edition is stored in XML format.^11^
+edition is stored in XML format.[^11]
 
 A markup language embeds information about a document in the text. In
 the following table, the markup tags indicate that the text contains CD
@@ -3692,7 +3692,7 @@ apartment.
 
 *A decision tree*
 
-![]() *MISSING*
+![](Figures/Chapter 14/decision-tree.png)
 
 ##### Genetic algorithms {-}
 
@@ -4524,7 +4524,7 @@ convert the column quarter from character to integer.
 
 *Reshaping data with gathering and spreading*
 
-![]() *MISSING*
+![](Chapter 15/Figures/gather-spread.png)
 
 ```{r, eval = FALSE}
 library(readr)
@@ -6213,7 +6213,7 @@ library(koRpus)
 library(koRpus.lang.en)
 #tokenize the first letter in the corpus after converting to character vector
 txt <-  letters[[1]][1] # first element in the list
-tagged.text <- tokenize(as.character(txt),format="obj",lang="en")
+tagged.text <- koRpus::tokenize(as.character(txt),format="obj",lang="en")
 # score
 readability(tagged.text, hyphen=NULL,index="FORCAST")
 ```

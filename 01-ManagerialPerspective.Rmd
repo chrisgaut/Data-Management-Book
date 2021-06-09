@@ -1,6 +1,7 @@
 ---
 title: "Data Management: Databases and Organizations"
-author: "Dr. Rick Watson"
+author: "Authored by Dr. Rick Watson, converted and edited by Christopher Gauthier"
+description: "Converted and edited by Christopher Gauthier"
 site: "bookdown::bookdown_site"
 output:
   bookdown::gitbook: 
@@ -39,7 +40,7 @@ these maps initially may be hard to read, and so you may need to consult
 them several times before you understand the landscape you are about to
 enter.
 
-The first map is based on the Newell-Simon model^1^ of the human
+The first map is based on the Newell-Simon model[^1] of the human
 information processing system, which shows that humans receive input,
 process it, and produce output. The processing is done by a processor,
 which is linked to a memory that stores both data and processes. The
@@ -69,7 +70,7 @@ The original model of human information processing can be extended to
 include external memory, for storing data and processes, and external
 processors, for executing processes.
 
-***Missing this image***
+![](Figures/Section 1/processing-model.png)
 
 This model of augmented human information processing translates directly
 to an organizational setting. Organizations collect inputs from the
@@ -107,7 +108,7 @@ design or a business process management course.
 
 *All the value of this company is in its people. If you burned down all our plants, and we just kept our people and our information files, we should soon be as strong as ever.*
 
-> Thomas Watson, Jr., former chairman of IBM^2^
+> Thomas Watson, Jr., former chairman of IBM[^2]
 
 ### Learning objectives {-}
 
@@ -1006,7 +1007,7 @@ often claims that "The Expeditioner was the first mail order company."
 
 The Expeditioner's customers included the famous and the legendary.
 Orders from Marco Polo, Columbus, Magellan, Cook, and Livingston can be
-found in the ledgers. The most long-lived customer is a Mr. Walker,^3^
+found in the ledgers. The most long-lived customer is a Mr. Walker,[^3]
 who for several hundred years has had a standing yearly order of one
 roll of purple, premium-quality, non-rip, jungle twill. The
 Expeditioner's hats are very popular with a Mr. I. Jones, an American.
@@ -1014,7 +1015,7 @@ Expeditioner's hats are very popular with a Mr. I. Jones, an American.
 The nineteenth century was one long boom for The Expeditioner, the
 supplier de rigueur for the guardians of the European colonies. Branch
 offices were opened in Bombay, Sydney, Cape Town, and Singapore. For a
-generous fee, cad and renowned adventurer Harry Flashman^4^ assiduously
+generous fee, cad and renowned adventurer Harry Flashman[^4] assiduously
 promoted The Expeditioner's wares on his many trips. As a result, orders
 poured in from the four corners of the globe. The Expeditioner's catalog
 was found in polite society and clubs throughout the British Empire.
@@ -1045,7 +1046,7 @@ Mannering of Chumli, Crepiny, Marchbanks, and Sinjun. I am pleased to
 meet you," and handed Alice his card. Alice quickly inspected the card,
 which read, "Nigel Mainwaring, LL. B., Cholmondeley, Crespigny,
 Majoribanks, and St. John," but he had said nothing like that. She
-thought, "What planet is this guy from?"^5^
+thought, "What planet is this guy from?"[^5]
 
 It took fifteen minutes for Alice to discover that British English was
 not quite the same as American English. She quickly learned---or should
@@ -1213,7 +1214,7 @@ systems;
 
 There are three characteristics of the early decades of the twenty-first
 century: global warming, high-velocity global change, and the emerging
-power of information organizations.^6^ he need to create a sustainable
+power of information organizations.[^6] he need to create a sustainable
 civilization, the globalization of business, and the rise of China as a
 major economic power are major forces contributing to mass change.
 Organizations are undergoing large-scale restructuring as they attempt
@@ -1271,7 +1272,7 @@ centuries of industrialization, atmospheric CO~2~ levels have become
 alarmingly high. We are also reaching the limits of the planet's
 resources as its population now exceeds seven billion people. As a
 result, a new class of application is emerging, such as environmental
-management systems and UPS\'s telematics project.^7^ These new systems
+management systems and UPS\'s telematics project.[^7] These new systems
 will also include, for example, support for understanding environmental
 impact through simulation of energy consuming and production systems,
 optimization of energy systems, and design of low impact production and
@@ -1341,28 +1342,28 @@ worker as a printout.
 
 *Information systems eras*
 
-+-------------+-------------+-------------+-------------+-------------+
-| Era         | Focus       | Period      | Technology  | Networks    |
-+=============+=============+=============+=============+=============+
-| 1           | Take        | 1950s --    | Batch       | Few data    |
-|             | information | mid-1970s   |             | networks    |
-|             | work to the |             |             |             |
-|             | computer    |             |             |             |
-+-------------+-------------+-------------+-------------+-------------+
-| 2           | Take        | Mid-1970s   | Host/termin | Spread of   |
-|             | information | --          | al          | private     |
-|             | work to the | mid-1990s   |             | networks    |
-|             | employee    |             | Client/serv |             |
-|             |             |             | er          |             |
-+-------------+-------------+-------------+-------------+-------------+
-| 3           | Take        | Mid-1990s   | Browser/ser | Public      |
-|             | information | -- present  | ver         | networks\   |
-|             | work to the |             |             | (Internet)  |
-|             | customer    |             |             |             |
-|             | and other   |             |             |             |
-|             | stakeholder |             |             |             |
-|             | s           |             |             |             |
-+-------------+-------------+-------------+-------------+-------------+
++-------------+-------------+--------------+-------------+-------------+
+| Era         | Focus       | Period       | Technology  | Networks    |
++=============+=============+==============+=============+=============+
+| 1           | Take        | 1950s --     | Batch       | Few data    |
+|             | information | mid-1970s    |             | networks    |
+|             | work to the |              |             |             |
+|             | computer    |              |             |             |
++-------------+-------------+--------------+-------------+-------------+
+| 2           | Take        | Mid-1970s -- | Host/termin | Spread of   |
+|             | information | mid-1990s    | al          | private     |
+|             | work to the |              |             | networks    |
+|             | employee    |              | Client/serv |             |
+|             |             |              | er          |             |
++-------------+-------------+--------------+-------------+-------------+
+| 3           | Take        | Mid-1990s    | Browser/ser | Public      |
+|             | information | -- present   | ver         | networks\   |
+|             | work to the |              |             | (Internet)  |
+|             | customer    |              |             |             |
+|             | and other   |              |             |             |
+|             | stakeholder |              |             |             |
+|             | s           |              |             |             |
++-------------+-------------+--------------+-------------+-------------+
 
 In the second era, private networks were used to take information work
 to the employee. Initially, these were time-sharing and host/terminal
@@ -1502,7 +1503,7 @@ There is no opportunity for questions, no additional information from
 body movements and vocal tone. The information richness of some
 communication media is shown in the following table.
 
-*Information richness and communication media^8^*
+*Information richness and communication media[^8]*
 
   Richest                                                                        Leanest
   -------------- ----------- -------------------- ------------------------------ -------------------
@@ -1700,7 +1701,7 @@ input information (e.g., number of service calls) can also be measured,
 and there is qualitative information to be considered. Because of time
 constraints, most managers are forced to limit their attention to 10 or
 fewer key variables singled out by the critical success factors (CSF)
-method.^9^ Scorekeeping information is usually fairly stable.
+method.[^9] Scorekeeping information is usually fairly stable.
 
 *Sales output tracking information*
 
